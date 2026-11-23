@@ -1,0 +1,556 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>先生ライフ 3.0 | キャンパスキャリア</title><style>
+:root{font-family:system-ui,-apple-system,'Hiragino Kaku Gothic ProN',sans-serif;color:#eaf3ff;background:#081321}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 0%,#23466a 0,transparent 35%),#081321}button,select{font:inherit}button{cursor:pointer;border:0}button:focus-visible,select:focus-visible{outline:3px solid #ffd47b;outline-offset:2px}.shell{max-width:1220px;margin:auto;padding:16px}.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.brand{font-weight:900;letter-spacing:.04em;font-size:1.3rem}.brand small{font-size:.65rem;display:block;color:#8baecb;font-weight:500}.pill{padding:7px 11px;border-radius:30px;background:#163651;color:#b5d6f0;font-size:.78rem}.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(285px,.8fr);gap:14px}.sceneCard{border:1px solid #416384;border-radius:22px;overflow:hidden;background:#102a42;box-shadow:0 24px 70px #0006}.sceneHead{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#142b42}.sceneHead b{font-size:.95rem}.scene{position:relative;aspect-ratio:16/10;min-height:310px;overflow:hidden;background:#86c7ec}canvas{width:100%;height:100%;display:block;touch-action:none}.sceneOverlay{position:absolute;left:12px;top:12px;pointer-events:none;padding:8px 12px;background:#10263cba;border:1px solid #ffffff40;border-radius:13px;font-size:.76rem;backdrop-filter:blur(8px)}.hint{position:absolute;bottom:12px;left:12px;right:12px;text-align:center;font-size:.75rem;background:#092238bd;padding:8px;border-radius:10px;pointer-events:none}.sceneFoot{display:flex;gap:8px;flex-wrap:wrap;padding:11px;background:#0c2033}.sceneFoot button,.nav button{background:#224361;color:#d9efff;border-radius:12px;padding:10px 12px;transition:.2s}.sceneFoot button:hover,.nav button:hover{background:#316589}.sceneFoot button.active,.nav button.active{background:#f5c879;color:#162b3b;font-weight:800}.panel{background:#11283f;border:1px solid #31516e;border-radius:20px;padding:17px;box-shadow:0 16px 50px #0003}.panel h2{font-size:1.05rem;margin:0 0 13px}.panel h3{font-size:.9rem;margin:16px 0 8px}.sub{color:#a4bdd2;font-size:.83rem;line-height:1.65}.row{display:flex;align-items:center;justify-content:space-between;gap:9px}.stat{margin:12px 0}.stat .row{font-size:.82rem}.bar{height:7px;border-radius:10px;background:#24425b;overflow:hidden;margin-top:6px}.bar>i{display:block;height:100%;background:linear-gradient(90deg,#61b9f4,#a4f1d2);border-radius:10px;transition:width .55s}.nav{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:12px 0}.nav button{font-size:.77rem;padding:11px 4px}.btn{background:linear-gradient(125deg,#f4c56b,#ffe4a0);color:#1b3042;padding:12px 16px;border-radius:12px;font-weight:800;width:100%;margin:6px 0;transition:transform .16s}.btn:active{transform:scale(.97)}.btn.alt{background:#294a66;color:#f2f8ff}.btn.danger{background:#7c3845;color:white}.field{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{font-size:.8rem;color:#b4cee0}.field select{width:100%;background:#183a56;color:#fff;border:1px solid #50728f;padding:10px;border-radius:10px;margin-top:5px}.chips{display:flex;flex-wrap:wrap;gap:7px}.chip{border:1px solid #52748e;border-radius:20px;padding:8px 11px;color:#c7e1f5;background:#1b3953;font-size:.8rem}.chip.on{background:#ffe0a1;color:#18344b;border-color:#ffe0a1}.scroll{max-height:320px;overflow:auto}.listItem{border-bottom:1px solid #31506b;padding:10px 0;font-size:.84rem;line-height:1.6}.dialog{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);width:min(92%,570px);background:#102b45ed;border:1px solid #f2d6a1;border-radius:18px;padding:16px;box-shadow:0 15px 40px #0009;backdrop-filter:blur(12px);animation:pop .25s both}.dialog strong{color:#ffe4a7}.dialog p{font-size:.9rem;line-height:1.6;margin:7px 0}.dialog button{background:#2c5778;color:white;border-radius:9px;padding:9px 12px;margin:4px}.hidden{display:none!important}.screen{max-width:700px;margin:30px auto}.title{font-size:2rem;font-weight:900;line-height:1.3}.badge{color:#f3d393;font-size:.8rem}.note{border-left:3px solid #f1c878;background:#17344d;padding:10px;margin:10px 0;font-size:.83rem;line-height:1.65}.timetable{width:100%;border-collapse:collapse;font-size:.69rem}.timetable th,.timetable td{border:1px solid #395872;padding:7px 3px;text-align:center;min-width:44px}.timetable th{background:#25445e}.timetable td{background:#17334b}.timetable td.fixed{background:#705a36;color:#fff1ce}.foot{color:#7291ac;text-align:center;font-size:.73rem;margin:15px}.sceneCard,.panel{animation:rise .5s both}@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}@keyframes pop{from{opacity:0;transform:translate(-50%,12px) scale(.96)}to{opacity:1;transform:translate(-50%,0) scale(1)}}@media(max-width:800px){.layout{grid-template-columns:1fr}.scene{min-height:245px}.shell{padding:10px}.title{font-size:1.5rem}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+.storyMetrics{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:12px 0}.storyMetrics>div{background:#1c405c;border:1px solid #426783;padding:12px 7px;border-radius:13px;text-align:center;font-size:.75rem}.storyMetrics b{display:block;font-size:1.35rem;color:#ffdf9c;margin-top:5px}.storyEvent{background:linear-gradient(145deg,#244967,#152c45);border:1px solid #f2cf85;border-radius:16px;padding:16px;box-shadow:0 12px 35px #0004;animation:rise .45s both}.storyEvent p{line-height:1.7;font-size:.91rem}.storyEvent h3{font-size:1.15rem}.nav{grid-template-columns:repeat(5,1fr)}.sceneCard{transition:box-shadow .3s}.sceneCard:hover{box-shadow:0 24px 75px #0008}@media(max-width:450px){.nav button{font-size:.68rem;padding:10px 2px}.storyMetrics>div{font-size:.65rem}}.auto-choice{display:block;padding:12px;border:1px solid #7e96a9;border-radius:10px;margin:10px 0;font-weight:700}.auto-choice input{width:18px;height:18px;vertical-align:middle;margin-right:7px}</style></head><body><div id="app"><div style="font:16px system-ui;padding:32px;background:#14283b;color:white;min-height:100vh"><h1>🏫 先生ライフ</h1><p>ゲームを起動しています…</p><p>この表示のままの場合は、HTMLファイルをダウンロードし、Edge または Chrome で開いてください。</p></div></div><script>
+'use strict';
+const $=s=>document.querySelector(s);const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const licenseList=['国語','数学','英語','理科','社会','体育','宗教','家庭科','情報','音楽','美術','書道'];
+const subjects={理科:['理科A','理科B','物理基礎','化学基礎','生物基礎','地学基礎','物理','化学','生物','理数研究'],数学:['代数','幾何','数学α','数学β','数学Ⅰ','数学Ⅱ','数学Ⅲ','数学A','数学B','数学C','理数研究'],英語:['英語A','英語B','英語C','英語コミュニケーションⅠ','英語コミュニケーションⅡ','英語コミュニケーションⅢ','論理表現Ⅰ','論理表現Ⅱ','論理表現Ⅲ','英語実践','英語多読/PBA'],国語:['国語Ⅰ','国語Ⅱ','言語文化','現代の国語','古典探究','論理国語','文学国語','表現国語'],社会:['地理','歴史','公民','地理総合','歴史総合','地理探究','日本史探究','世界史探究','政治経済','現代を学ぶ'],体育:['体育','保健','柔道','ダンス','スポーツⅡ'],宗教:['宗教'],家庭科:['技術家庭','家庭基礎'],情報:['情報Ⅰ'],音楽:['音楽','芸術（音楽）'],美術:['美術','芸術（美術）'],書道:['書道','芸術（書道）']};
+const CLUBS={高校:{体育系:['硬式野球','軟式野球','卓球','陸上競技','柔道','剣道','ワンダーフォーゲル','ソフトテニス','バスケットボール','サッカー','バレーボール','アメリカンフットボール','バドミントン','フェンシング','ハンドボール','チアダンス','ゴルフ（同好会）'],文化系:['考古学','写真','吹奏楽','鉄道研究','美術','将棋','ネイチャー','ESS','茶道','GCC','競技かるた','華道（同好会）','書道','合唱','放送・出版局','図書局','インターアクト','宗教研究','生徒会']},中学:{体育系:['野球','剣道','バスケットボール','バドミントン','フェンシング','陸上競技','ソフトテニス','柔道','チアダンス'],文化系:['考古学研究','鉄道研究','美術','吹奏楽','新聞（同好会）']}};
+const DAYS=['月','火','水','木','金','土'];
+function clubOptions(){return ['お任せ','顧問なし',...Object.values(CLUBS[state.school]).flat().map(x=>/(同好会|局|生徒会)/.test(x)?x:x+'部')]} 
+function classNumbers(school,grade){return school==='中学'?[1,2,3]:Array.from({length:12},(_,i)=>i+1)}
+function classLabel(school,grade,n){let tr=school==='中学'?'':n===1?'A':n>=11?'特':'P';return `${school==='中学'?'中':'高'}${grade} ${tr} ${n}組`.replace(/ +/g,' ').trim()}
+function deputyPlan(school,grade,number){const nums=classNumbers(school,grade);if(school==='高校'&&number>=8&&number<=10)return {name:'プログレスコース長',rooms:[8,9,10].map(n=>classLabel(school,grade,n))};if(school==='高校'&&grade===3&&number>=11)return {name:'特進コース長',rooms:[11,12].map(n=>classLabel(school,grade,n))};if(school==='高校'&&number>=11)return {name:`${grade}年特進副担任`,rooms:[11,12].map(n=>classLabel(school,grade,n))};if(school==='高校'&&number===1)return {name:`${grade}年A副担任`,rooms:[classLabel(school,grade,1),classLabel(school,grade,2)]};const a=number%2===0?number-1:number;const pair=nums.filter(n=>n===a||n===a+1);if(pair.length<2&&nums.length>1)pair.unshift(nums[nums.length-2]);return {name:`${grade}年副担任`,rooms:pair.map(n=>classLabel(school,grade,n))}}
+function roomNumber(){let m=state.room.match(/(\d+)組$/);return m?Number(m[1]):1}
+function deputyInfo(){return deputyPlan(state.school,state.grade,roomNumber())}
+function trainingNote(){return `研修日：${state.trainingDay}曜日 ／ 学級対応：${state.trainingDay}曜は${state.deputyName}が代行`}
+const events=[{week:1,name:'入学式',desc:'新入生が緊張した表情で講堂に集まっています。',choices:['一人ひとりに声をかける','学年の先生と連携して誘導する']},{week:7,name:'校外学習',desc:'班別行動が始まります。生徒の自主性をどう支えますか？',choices:['生徒に計画を任せて見守る','事前に安全確認を丁寧に行う']},{week:19,name:'文化祭',desc:'クラスの企画の準備が大詰めです。',choices:['生徒のアイデアを尊重する','役割分担を再確認する']},{week:23,name:'体育祭',desc:'競技に向けてクラスの気持ちが高まっています。',choices:['全員を励ます','競技運営を手伝う']},{week:34,name:'研修旅行',desc:'2月の研修旅行。班の集合時間が近づいています。',choices:['班長に状況を確認する','引率教員で連携する']},{week:40,name:'卒業式',desc:'卒業生の門出を迎えました。',choices:['生徒へ最後の言葉を贈る','学年の先生たちに感謝を伝える']}];
+const npcs={教室:[['佐藤 ひなた','生徒','今日の授業、ちょっと難しかったです。','具体例を使って説明する','一緒に復習する'],['田中 悠斗','生徒','文化祭の企画、相談してもいいですか？','生徒の案を聞く','学級会で話し合おう']],職員室:[['山本 先生','同僚・数学科','次の研究授業、一緒に準備しませんか？','教材を共同研究する','授業案を見せてもらう'],['小林 先生','同僚・英語科','今週の行事準備、お疲れさまです。','仕事の話をする','休憩中に雑談する'],['教頭先生','管理職','学級の様子はどうですか？','近況を報告する','指導について相談する']],廊下:[['鈴木 さん','生徒','進路のことで少し悩んでいます。','話を聞く','進路指導部につなぐ'],['森 先生','同僚・理科','来週の実験準備、手伝いましょうか？','一緒に準備する','お礼を伝える']]};
+const state={licenses:['理科'],spec:['化学'],social:[],wishSubjects:['化学基礎','化学'],school:'高校',course:'P',grade:1,homeroomAuto:false,teachAuto:false,teachSchools:['中学','高校'],teachGrades:[1,2,3],teachCourses:['A','P','特'],role:'お任せ',dept:'お任せ',club:'吹奏楽部',trainingDay:'お任せ',deputyName:'',deputyRooms:[],year:1,week:1,trust:60,skill:48,admin:45,energy:82,issues:0,room:'',assignment:'',classes:[],subject:'',scene:'教室',tab:'行動',dialog:null,history:[],appointed:false,position:'担任'};
+function load(){try{let v=JSON.parse(localStorage.getItem('teacherLife27Windows'));if(v&&v.version===2)Object.assign(state,v.state)}catch(e){}}
+function save(){try{localStorage.setItem('teacherLife27Windows',JSON.stringify({version:2,state:{...state,dialog:null}}))}catch(e){}}
+load();
+if(!DAYS.includes(state.trainingDay)&&state.trainingDay!=='お任せ')state.trainingDay='お任せ';
+function validSubject(name,grade,course,track){const g=grade;const mid=state.school==='中学';if(mid){if(['理科A','理科B','国語Ⅰ','国語Ⅱ','英語A','英語B','英語C','音楽','美術','書道','体育','宗教','技術家庭','LHR'].includes(name))return true;if(['代数','幾何'].includes(name))return g<3;if(['数学α','数学β'].includes(name))return g===3;if(name==='地理')return g===1;if(name==='歴史')return g===2;if(name==='公民')return g===3;return false}
+if(['体育','宗教','LHR','総合探究'].includes(name))return true;
+if(name==='スポーツⅡ')return course==='A';if(name==='柔道')return g===3;if(name==='ダンス')return g===3&&course!=='A';if(name==='保健')return g<=2;if(name==='情報Ⅰ'||name==='地理総合'||name==='歴史総合'||name==='物理基礎'||name==='生物基礎'||name==='数学Ⅰ'||name==='英語コミュニケーションⅠ'||name==='言語文化'||name==='現代の国語')return g===1;
+if(name==='家庭基礎')return g===2;if(name.startsWith('芸術'))return g===1&&(course!=='A'||name==='芸術（音楽）');if(name==='理数研究')return g>=2&&course==='P'&&track==='理';if(name==='現代を学ぶ')return g>=2&&(course==='A'||(course==='P'&&track!=='理'));
+if(name==='化学基礎')return (g===1&&course==='特')||(g===2&&['A','P'].includes(course))||(g===3&&course==='特'&&track==='国文');
+if(name==='地学基礎')return g===3&&(course==='A'||(course==='P'&&track!=='理')||(course==='特'&&track==='国文'));
+if(['物理','化学','生物'].includes(name))return g>=2&&track==='理';
+if(name==='数学Ⅱ'||name==='英語コミュニケーションⅡ'||name==='論理表現Ⅱ'||name==='公民')return g===2;
+if(name==='数学Ⅲ')return g===3&&track==='理';if(name==='数学A')return g===1&&course!=='A'||g===3&&course==='A';if(name==='数学B')return g===2&&(track==='理'||course==='特')||g===3&&course==='P'&&track!=='理';if(name==='数学C')return g===3&&course!=='A';
+if(name==='英語コミュニケーションⅢ'||name==='論理表現Ⅲ')return g===3;if(name==='論理表現Ⅰ')return g===1&&course!=='A'||g===3&&course==='A';if(name==='英語実践')return g>=2&&course==='P'&&track==='英専';if(name==='英語多読/PBA')return g===2&&course==='P'&&track==='文';
+if(['古典探究','論理国語'].includes(name))return g>=2;if(name==='文学国語')return g>=2&&course==='特'&&track!=='理';if(name==='表現国語')return g===3&&course==='P'&&track!=='理';
+if(name==='地理探究')return g===3&&course==='P'&&track==='理'||g>=2&&course==='特'&&track==='理';if(['日本史探究','世界史探究'].includes(name))return g>=2&&(course==='A'||track!=='理');if(name==='政治経済')return g===3&&course==='特'&&track!=='理';return false}
+
+// 教育課程暫定版（ユーザー提供表の各数値をそのまま登録）
+const CURRICULUM={"P1":{"現代の国語":2,"言語文化":2,"歴史総合":2,"地理総合":2,"数学Ⅰ":3,"数学A":2,"化学基礎":2,"生物基礎":2,"体育":2,"保健":1,"芸術Ⅰ":2,"英語コミュニケーションⅠ":3,"論理・表現Ⅰ":2,"家庭基礎":2,"情報Ⅰ":2,"宗教":1,"総合的な探究":1,"LHR":1},"A1":{"現代の国語":2,"言語文化":2,"歴史総合":2,"地理総合":2,"数学Ⅰ":3,"数学A":2,"化学基礎":2,"生物基礎":2,"体育":2,"保健":1,"芸術Ⅰ":2,"英語コミュニケーションⅠ":3,"論理・表現Ⅰ":2,"家庭基礎":2,"情報Ⅰ":2,"宗教":1,"総合的な探究":1,"LHR":1},"特1":{"現代の国語":2,"言語文化":2,"歴史総合":2,"地理総合":2,"数学Ⅰ":3,"数学A":2,"化学基礎":2,"生物基礎":2,"体育":2,"保健":1,"芸術Ⅰ":2,"英語コミュニケーションⅠ":3,"論理・表現Ⅰ":2,"家庭基礎":2,"情報Ⅰ":2,"宗教":1,"総合的な探究":1,"LHR":1,"発展演習":4},"P2文":{"論理国語":2,"文学国語":2,"古典探究":2,"日本史探究／世界史探究":4,"公共":2,"数学Ⅱ":2,"体育":2,"保健":1,"英語コミュニケーションⅡ":4,"論理・表現Ⅱ":2,"宗教":1,"総合的な探究":1,"LHR":1,"選択講座":8},"P2理":{"論理国語":2,"古典探究":2,"日本史探究／世界史探究":2,"公共":2,"数学Ⅱ":4,"数学B":2,"物理基礎":2,"化学":2,"体育":2,"保健":1,"英語コミュニケーションⅡ":4,"論理・表現Ⅱ":2,"宗教":1,"総合的な探究":1,"LHR":1,"選択講座":4},"P2英専":{"論理国語":2,"文学国語":2,"古典探究":2,"日本史探究／世界史探究":2,"公共":2,"数学Ⅱ":2,"体育":2,"保健":1,"英語コミュニケーションⅡ":5,"論理・表現Ⅱ":4,"英語演習":2,"宗教":1,"総合的な探究":1,"LHR":1,"選択講座":5},"P3文":{"論理国語":2,"文学国語":2,"古典探究":2,"日本史探究／世界史探究":4,"政治・経済":2,"体育":3,"英語コミュニケーションⅢ":4,"論理・表現Ⅲ":2,"宗教":1,"総合的な探究":1,"LHR":1,"選択講座":10},"P3理":{"論理国語":2,"古典探究":2,"日本史探究／世界史探究":2,"数学Ⅲ":4,"数学C":2,"化学":4,"物理／生物":4,"理科演習":2,"体育":3,"英語コミュニケーションⅢ":4,"論理・表現Ⅲ":2,"宗教":1,"総合的な探究":1,"LHR":1},"P3英専":{"論理国語":2,"文学国語":2,"古典探究":2,"日本史探究／世界史探究":2,"体育":3,"英語コミュニケーションⅢ":6,"論理・表現Ⅲ":4,"英語演習":3,"宗教":1,"総合的な探究":1,"LHR":1,"選択講座":7},"A2":{"論理国語":2,"文学国語":2,"古典探究":2,"日本史探究":3,"公共":2,"数学Ⅱ":3,"科学と人間生活":2,"体育":3,"保健":1,"英語コミュニケーションⅡ":4,"論理・表現Ⅱ":2,"宗教":1,"総合的な探究":1,"LHR":1,"選択講座・学校設定科目":5},"A3":{"論理国語":2,"文学国語":2,"古典探究":2,"日本史探究":3,"政治・経済":2,"数学演習":2,"体育":3,"英語コミュニケーションⅢ":4,"論理・表現Ⅲ":2,"宗教":1,"総合的な探究":1,"LHR":1,"選択講座・学校設定科目":9},"特2文":{"論理国語":2,"文学国語":2,"古典探究":2,"日本史探究／世界史探究":4,"公共":2,"数学Ⅱ":2,"体育":2,"保健":1,"英語コミュニケーションⅡ":4,"論理・表現Ⅱ":2,"宗教":1,"総合的な探究":1,"LHR":1,"選択講座":8,"発展演習":4},"特2理":{"論理国語":2,"古典探究":2,"日本史探究／世界史探究":2,"公共":2,"数学Ⅱ":4,"数学B":2,"物理基礎":2,"化学":2,"体育":2,"保健":1,"英語コミュニケーションⅡ":4,"論理・表現Ⅱ":2,"宗教":1,"総合的な探究":1,"LHR":1,"選択講座":4,"発展演習":4},"特3文":{"論理国語":2,"文学国語":2,"古典探究":2,"日本史探究／世界史探究":4,"政治・経済":2,"体育":3,"英語コミュニケーションⅢ":4,"論理・表現Ⅲ":2,"宗教":1,"総合的な探究":1,"LHR":1,"選択講座":10,"発展演習":4},"特3理":{"論理国語":2,"古典探究":2,"日本史探究／世界史探究":2,"数学Ⅲ":4,"数学C":2,"化学":4,"物理／生物":4,"理科演習":2,"体育":3,"英語コミュニケーションⅢ":4,"論理・表現Ⅲ":2,"宗教":1,"総合的な探究":1,"LHR":1,"発展演習":4}};
+const DAY_LIMITS={P:[6,6,6,6,6,4],A:[6,6,6,6,6,4],'特':[7,6,7,7,7,4]};
+const DAY_NAMES=['月','火','水','木','金','土'];
+function curriculumKey(){if(state.school==='中学')return null;let track=state.room.includes('英専')?'英専':state.room.includes('理')?'理':state.room.includes('文')?'文':state.grade===1?'':'文';return state.course+state.grade+(state.grade===1||state.course==='A'?'':track)}
+function curriculumFor(){return CURRICULUM[curriculumKey()]||{}}
+function scheduleModel(){
+ const limits=DAY_LIMITS[state.course]||DAY_LIMITS.P;
+ const cells=DAY_NAMES.map((d,di)=>Array.from({length:limits[di]},()=>null));
+ const rows=curriculumFor();const tally={...rows};const notes=[];
+ function put(di,p,sub,cl){if(p>limits[di]||cells[di][p-1])return false;cells[di][p-1]={sub,cl};if(tally[sub]>0)tally[sub]--;return true}
+ // 全校共通の固定時間を先に確保
+ if(state.school==='高校')put(1,5,'総合的な探究',state.room);
+ put(1,6,'LHR',state.room);
+ const isResearch=state.school==='高校'&&state.course==='P'&&state.grade>=2&&state.room.includes('理');
+ if(isResearch){put(4,5,'理数研究',state.room);put(4,6,'理数研究',state.room);notes.push('理数研究は別枠の追加設定（提供表の合計には未計上）。金曜5・6限を確保。')}
+ // 授業表の各コマ数を尊重。研究枠は表外のため、同時間の通常科目と並行授業扱い。
+ const entries=Object.entries(tally).filter(([s,n])=>n>0&&s!=='LHR'&&s!=='総合的な探究');
+ const queue=entries.flatMap(([s,n])=>Array.from({length:n},()=>s));
+ let free=[];for(let p=1;p<=7;p++)for(let di=0;di<6;di++)if(p<=limits[di]&&!cells[di][p-1])free.push([di,p]);
+ let i=0;for(const sub of queue){if(i>=free.length)break;const [di,p]=free[i++];put(di,p,sub,state.room)}
+ const remaining=queue.length-i;const total=Object.values(rows).reduce((a,b)=>a+b,0);const target=state.course==='特'?38:34;
+ if(total!==target)notes.push(`提供された科目のコマ数合計は${total}、設定上の週合計は${target}。差${total-target>0?'+':''}${total-target}コマ。表の数値は勝手に変更していません。`);
+ if(remaining>0)notes.push(`${remaining}コマが時間割に収まりません。選択科目の並行開講・履修配分の確認が必要です。`);
+ if(i<free.length)notes.push(`${free.length-i}コマは未割当（科目配当の不足分）。`);
+ return {cells,limits,notes,total,target,key:curriculumKey(),rows};
+}
+function curriculumSchedule(){if(state.school==='中学')return '<p class="sub">中学の教育課程コマ数は今回の表に含まれていないため、正式な時間割は未設定です。</p>';
+ const m=scheduleModel();let table=`<div class="scroll"><table class="timetable"><thead><tr><th>時限</th>${DAY_NAMES.map(d=>`<th>${d}</th>`).join('')}</tr></thead><tbody>`;
+ for(let p=1;p<=7;p++){table+=`<tr><th>${p}</th>`;for(let d=0;d<6;d++){let c=m.cells[d][p-1];table+=p>m.limits[d]?'<td>—</td>':`<td class="${c&&['LHR','総合的な探究','理数研究'].includes(c.sub)?'fixed':''}">${c?esc(c.sub)+'<br><small>'+esc(c.cl)+'</small>':'未割当'}</td>`}table+='</tr>'}table+='</tbody></table></div>';
+ let detail=Object.entries(m.rows).map(([s,n])=>`<div class="listItem">${esc(s)}：${n}コマ</div>`).join('');
+ return `<h3>教育課程：${esc(m.key)}（週${m.target}コマ）</h3>${table}<div class="note">${m.notes.length?m.notes.map(esc).join('<br>'):'指定されたコマ数の合計と時間枠が一致しています。'}</div><p class="sub">これは担当学級の教育課程時間割です。複数クラスを横断する教員個人の時間割は、学校全体の教員配置が確定してから生成する必要があります。</p><h3>科目別週コマ数</h3><div class="scroll">${detail}</div>`;
+}
+
+function tracks(){return state.school==='中学'?['中学']:state.course==='A'?['共通']:state.grade===1?['共通']:state.course==='P'?['理','英専','文']:['理',state.grade===3?'国文':'文']}
+function chooseClass(){let t=tracks();let track=t.includes('理')&&state.licenses.some(x=>['理科','数学','体育','音楽','美術','書道'].includes(x))?'理':t.includes('英専')&&state.licenses.includes('英語')?'英専':t.includes('文')?'文':t[0];if(state.course==='P'&&track==='英専'&&!state.licenses.includes('英語'))track='文';let num=state.school==='中学'?1:state.course==='A'?1:state.course==='特'?(track==='理'?11:12):track==='理'?2:track==='英専'?4:5;return {track,num}}
+function allTeachingPool(){let old=[state.teachSchools,state.teachGrades,state.teachCourses];state.teachSchools=['中学','高校'];state.teachGrades=[1,2,3];state.teachCourses=['A','P','特'];let result=teachingPool();[state.teachSchools,state.teachGrades,state.teachCourses]=old;return result}
+function teachingPool(){state.teachSchools=state.teachSchools||['中学','高校'];state.teachGrades=state.teachGrades||[1,2,3];state.teachCourses=state.teachCourses||['A','P','特'];let a=[];for(const school of state.teachSchools){for(const grade of state.teachGrades){if(school==='中学'){for(let n=1;n<=3;n++)a.push(`中${grade} ${n}組`)}else for(const course of state.teachCourses){let nums=course==='A'?[1]:course==='P'?[2,3,4,5,6,7,8,9,10]:[11,12];for(const n of nums){let tr=grade===1?course:course==='A'?'A':course==='P'?(n<=3?'P理':n===4?'P英専':'P文'):(n===11?'特理':grade===3?'特私文':'特文');a.push(`高${grade} ${n}組（${tr}）`)}}}}return a}
+function normalizedRoom(x){const m=x.match(/^([中高])(\d)\s+(?:(A|P|特)(理|英専|文|共通|国文)?\s+)?(\d+)組/);if(!m)return x;const [,sch,g,co,tr,n]=m;if(sch==='中')return `中${g} ${n}組`;const num=Number(n);const c=num===1?'A':num<=10?'P':'特';const track=Number(g)===1?c:c==='A'?'A':c==='P'?(num<=3?'P理':num===4?'P英専':'P文'):(num===11?'特理':Number(g)===3?'特私文':'特文');return `高${g} ${num}組（${track}）`}
+function assign(){if(state.homeroomAuto){state.school=Math.random()<.35?'中学':'高校';state.grade=1+Math.floor(Math.random()*3);state.course=['A','P','特'][Math.floor(Math.random()*3)]}const c=chooseClass();state.room=`${state.school==='中学'?'中':'高'}${state.grade} ${state.school==='中学'?'':state.course+c.track+' '}${c.num}組`;state.position=state.role==='お任せ'?(state.year%4===0?'副担任':'担任'):state.role;state.assignment=state.dept==='お任せ'?['教務','進路指導','生活指導','ICT'][state.year%4]:state.dept;state.trainingDay=state.trainingDay==='お任せ'?DAYS[(state.year+state.grade+roomNumber())%6]:state.trainingDay;if(!clubOptions().includes(state.club))state.club='お任せ';if(state.club==='お任せ')state.club='吹奏楽部';const dp=deputyInfo();state.deputyName=dp.name;state.deputyRooms=dp.rooms;
+let arr=[...new Set(state.licenses.flatMap(l=>subjects[l]||[]))];let curriculum=curriculumFor();let matches=x=>Object.keys(curriculum).some(k=>k===x||k.includes(x+'／')||k==='芸術Ⅰ'&&x.startsWith('芸術'));let preferred=state.wishSubjects.filter(x=>arr.includes(x)&&matches(x));let possible=arr.filter(matches);state.subject=preferred[0]||possible[0]||'担当教科';state.room=normalizedRoom(state.room);let pool=(state.teachAuto?allTeachingPool():teachingPool()).filter(x=>x!==state.room);let sameSchool=pool.filter(x=>x[0]===state.room[0]);let ordered=[...sameSchool,...pool.filter(x=>!sameSchool.includes(x))];state.classes=[state.room,...ordered.slice(0,5)];state.classes=[...new Set(state.classes)];state.appointed=true;state.history.unshift(`${state.year}年目：${state.room} ${state.position}に着任。担当科目 ${state.subject}。研修日 ${state.trainingDay}曜。副担任 ${state.deputyName}`);save()}
+function options(arr,val){return arr.map(x=>`<option value="${esc(x)}" ${String(x)===String(val)?'selected':''}>${esc(x)}</option>`).join('')}
+function setup(){state.teachSchools=state.teachSchools||['中学','高校'];state.teachGrades=state.teachGrades||[1,2,3];state.teachCourses=state.teachCourses||['A','P','特'];const subjectOpts=[...new Set(state.licenses.flatMap(l=>subjects[l]||[]))];return `<div class="screen panel"><div class="badge">NEW SCHOOL YEAR · CHARACTER CREATION</div><h1 class="title">先生ライフ<br>キャンパスストーリー</h1><p class="sub">3D風の教室や職員室を歩き、生徒や同僚と会話する教師シミュレーション。まずは教員免許と人事希望を登録しよう。</p><h3>教員免許（複数選択）</h3><div class="chips">${licenseList.map(x=>`<button class="chip ${state.licenses.includes(x)?'on':''}" data-license="${x}">${x}</button>`).join('')}</div>${state.licenses.includes('理科')?`<h3>理科の専門分野</h3><div class="chips">${['物理','化学','生物','地学'].map(x=>`<button class="chip ${state.spec.includes(x)?'on':''}" data-spec="${x}">${x}</button>`).join('')}</div>`:''}${state.licenses.includes('社会')?`<h3>社会の専門分野</h3><div class="chips">${['地理','歴史','公民'].map(x=>`<button class="chip ${state.social.includes(x)?'on':''}" data-social="${x}">${x}</button>`).join('')}</div>`:''}<h3>担当したい科目（複数選択）</h3><div class="chips">${subjectOpts.map(x=>`<button class="chip ${state.wishSubjects.includes(x)?'on':''}" data-wish="${esc(x)}">${esc(x)}</button>`).join('')}</div><p class="sub">希望が通らない場合や、専門外の科目を担当する場合もあります。学年・コース別の履修条件を優先します。</p><h3>授業担当の希望方法</h3><label class="auto-choice"><input type="checkbox" id="teachAuto" ${state.teachAuto?'checked':''}> 校種・学年・コースをすべてお任せ</label><p class="sub">お任せの場合、校長が中学・高校の両方から担当授業を選びます。以下の希望は指定モードのときだけ適用されます。</p><div style="opacity:${state.teachAuto?'.45':'1'}"><h3>授業を担当したい校種（複数選択）</h3><div class="chips">${['中学','高校'].map(x=>`<button class="chip ${state.teachSchools.includes(x)?'on':''}" data-teachschool="${x}">${x}</button>`).join('')}</div><p class="sub">中学と高校の両方を選べます。担任希望の校種とは別に指定できます。</p><h3>授業を担当したい学年（複数選択）</h3><div class="chips">${[1,2,3].map(x=>`<button class="chip ${state.teachGrades.includes(x)?'on':''}" data-teachgrade="${x}">${x}年</button>`).join('')}</div><h3>高校で担当したいコース（複数選択）</h3><div class="chips">${['A','P','特'].map(x=>`<button class="chip ${state.teachCourses.includes(x)?'on':''}" data-teachcourse="${x}">${x==='A'?'A（アスリート）':x==='P'?'P（プログレス）':'特（特進）'}</button>`).join('')}</div><p class="sub">これらは授業担当の希望であり、担任の所属とは独立。免許・教育課程・人員配置によって希望が通らない場合があります。</p></div><h3>担任・人事希望</h3><label class="auto-choice"><input type="checkbox" id="homeroomAuto" ${state.homeroomAuto?'checked':''}> 担任の校種・学年・コースをお任せ</label><p class="sub">お任せなら中学・高校のどこに配属されるか校長が決定します。</p><div class="field"><label>校種<select id="school">${options(['中学','高校'],state.school)}</select></label><label>コース<select id="course">${options(['A','P','特'],state.course)}</select></label><label>学年<select id="grade">${options(['1','2','3'],state.grade)}</select></label><label>学級担当<select id="role">${options(['お任せ','担任','副担任','担任なし'],state.role)}</select></label><label>校務分掌<select id="dept">${options(['お任せ','教務','進路指導','ICT','生活指導','高大連携','宗教教育','国際','特活指導'],state.dept)}</select></label><label>部活動<select id="club">${options(clubOptions(),state.club)}</select></label><label>研修日<select id="trainingDay">${options(['お任せ',...DAYS],state.trainingDay)}</select></label></div><button class="btn" id="start">校長の辞令を受け取る →</button></div>`}
+function schedule(){return `<div class="note">${esc(trainingNote())}。研修日の教科授業は別途代講調整が必要です。</div>`+curriculumSchedule()}
+function side(){let currentEvent=events.find(e=>e.week===state.week);let h=state.history.slice(0,10);let content=state.tab==='時間割'?`<h2>📅 学級教育課程・時間割</h2>${schedule()}`:state.tab==='人事'?`<h2>📋 人事・担当</h2><div class="listItem">所属：${esc(state.room)}<br>役割：${esc(state.position)}<br>校務：${esc(state.assignment)}<br>顧問：${esc(state.club)}<br>授業希望：${state.teachAuto?'お任せ':esc(state.teachSchools.join("・"))}／${esc(state.teachGrades.join("・"))}年／${esc(state.teachCourses.join("・"))}<br>教科：${esc(state.subject)}<br>${esc(trainingNote())}<br>副担任担当：${esc(state.deputyName)}（${state.deputyRooms.map(esc).join('・')}）</div><div class="note">研修日は担任以外にも設定されます。担任不在時は副担任が学級連絡・朝夕のHRなどを代行します。教科授業の代講は別途調整します。副担任は原則同学年2クラス、10組のPコース長は3クラス、高3特進は特進コース長が担当します。</div><h3>担当クラス（${state.classes.length}クラス）</h3>${state.classes.map(x=>`<div class="listItem">${esc(x)} ${x===state.room?'★担任クラス':''}</div>`).join('')}<button class="btn alt" id="newyear">次年度の人事希望へ</button>`:state.tab==='記録'?`<h2>📖 勤務記録</h2><div class="scroll">${h.map(x=>`<div class="listItem">${esc(x)}</div>`).join('')}</div>`:`<h2>今週の学校生活</h2><p class="sub">${state.year}年目 · 第${state.week}週 · ${esc(state.position)}<br>${esc(state.room)}<br>研修日：${esc(state.trainingDay)}曜日</p>${[['信頼',state.trust],['授業力',state.skill],['校務評価',state.admin],['体力',state.energy]].map(([k,v])=>`<div class="stat"><div class="row"><span>${k}</span><b>${v}</b></div><div class="bar"><i style="width:${v}%"></i></div></div>`).join('')}<div class="note">${currentEvent?`🎉 今週の行事：${currentEvent.name}`:'教室や職員室の人物をタップして会話しよう。'}</div>${currentEvent?`<button class="btn" id="event">${currentEvent.name}に参加する</button>`:''}<button class="btn alt" id="lesson">授業をする（1週間進む）</button><button class="btn alt" id="rest">教材研究・休養（1週間進む）</button><button class="btn danger" id="problem">学校で起きた問題に対応する</button>`;return `<div class="panel"><div class="nav">${['行動','時間割','人事','記録'].map(x=>`<button data-tab="${x}" class="${state.tab===x?'active':''}">${x}</button>`).join('')}</div>${content}</div>`}
+function dialogHtml(){if(!state.dialog)return '';let d=state.dialog;return `<div class="dialog" role="dialog" aria-label="会話"><strong>${esc(d.name)}</strong><p>${esc(d.text)}</p>${d.choices.map((x,i)=>`<button data-answer="${i}">${esc(x)}</button>`).join('')}<button data-close="1">閉じる</button></div>`}
+function game(){return `<div class="shell"><div class="top"><div class="brand">🏫 先生ライフ <small>CAMPUS STORY · 3.0</small></div><span class="pill">${state.year}年目・${state.week}週</span></div><div class="layout"><div class="sceneCard"><div class="sceneHead"><b>📍 ${state.scene}</b><span class="pill">${state.room}</span></div><div class="scene"><canvas id="world" aria-label="学校の3D風シーン。人物をタップして会話"></canvas><div class="sceneOverlay">🎮 人物をタップして会話</div><div class="hint">左右の矢印キーでも移動できます · 人物をタップすると会話が始まります</div>${dialogHtml()}</div><div class="sceneFoot">${['教室','職員室','廊下'].map(x=>`<button class="${state.scene===x?'active':''}" data-scene="${x}">${x==='教室'?'📚':x==='職員室'?'☕':'🚶'} ${x}</button>`).join('')}<button id="walk">▶ 歩く</button></div></div>${side()}</div><div class="foot">ブラウザ内に自動保存 · オリジナルの3D風試作ゲーム · 外部ライブラリ不要</div></div>`}
+function render(){let app=$('#app');app.innerHTML=state.appointed?game():setup();bind();if(state.appointed)startCanvas();save()}
+function toggle(key,value){let a=state[key];state[key]=a.includes(value)?a.filter(x=>x!==value):[...a,value];if(key==='licenses'){state.wishSubjects=state.wishSubjects.filter(x=>state.licenses.some(l=>(subjects[l]||[]).includes(x)))}render()}
+function clamp(x){return Math.max(0,Math.min(100,x))}
+function advance(name,t=3,s=3,a=2,e=-5,issue=0){state.trust=clamp(state.trust+t);state.skill=clamp(state.skill+s);state.admin=clamp(state.admin+a);state.energy=clamp(state.energy+e);state.issues=Math.max(0,state.issues+issue);state.history.unshift(`第${state.week}週：${name}`);if(state.position==='担任'&&state.issues>=5&&state.trust<40){state.position='副担任';state.history.unshift('校長との面談・事実確認後、担任を解かれました。')}if(state.week===40){state.week=1;state.year++;state.appointed=false;state.history.unshift('年度終了。来年度の希望を提出してください。')}else state.week++;state.dialog=null;render()}
+function openNpc(i){let n=npcs[state.scene][i];if(!n)return;state.dialog={name:n[0]+'（'+n[1]+'）',text:n[2],choices:[n[3],n[4]]};render()}
+function bind(){let ta=$('#teachAuto');if(ta)ta.onchange=()=>{state.teachAuto=ta.checked;save();render()};let ha=$('#homeroomAuto');if(ha)ha.onchange=()=>{state.homeroomAuto=ha.checked;save();render()};document.querySelectorAll('[data-teachschool]').forEach(b=>b.onclick=()=>toggle('teachSchools',b.dataset.teachschool));document.querySelectorAll('[data-teachgrade]').forEach(b=>b.onclick=()=>toggle('teachGrades',Number(b.dataset.teachgrade)));document.querySelectorAll('[data-teachcourse]').forEach(b=>b.onclick=()=>toggle('teachCourses',b.dataset.teachcourse));document.querySelectorAll('[data-license]').forEach(b=>b.onclick=()=>toggle('licenses',b.dataset.license));document.querySelectorAll('[data-spec]').forEach(b=>b.onclick=()=>toggle('spec',b.dataset.spec));document.querySelectorAll('[data-social]').forEach(b=>b.onclick=()=>toggle('social',b.dataset.social));document.querySelectorAll('[data-wish]').forEach(b=>b.onclick=()=>toggle('wishSubjects',b.dataset.wish));['school','course','grade','role','dept','club','trainingDay'].forEach(k=>{let e=$('#'+k);if(e)e.onchange=()=>{state[k]=k==='grade'?Number(e.value):e.value;if(k==='school'){state.club='お任せ';render();return}save()}});let start=$('#start');if(start)start.onclick=()=>{if(!state.licenses.length){alert('教員免許を1つ以上選択してください');return}if(!state.teachAuto&&(!state.teachSchools.length||!state.teachGrades.length||(state.teachSchools.includes('高校')&&!state.teachCourses.length))){alert('授業希望の校種・学年・コースを選択してください');return}assign();render()};document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;render()});document.querySelectorAll('[data-scene]').forEach(b=>b.onclick=()=>{state.scene=b.dataset.scene;state.dialog=null;render()});let walk=$('#walk');if(walk)walk.onclick=()=>{heroX=(heroX+55)%650};let lesson=$('#lesson');if(lesson)lesson.onclick=()=>advance('担当クラスで授業を実施',4,7,1,-8);let rest=$('#rest');if(rest)rest.onclick=()=>advance('教材研究と休養',0,5,2,14);let prob=$('#problem');if(prob)prob.onclick=()=>{state.dialog={name:'校長室からの連絡',text:'保護者から学級運営に関する相談がありました。事実確認を行い、対応を検討してください。',choices:['学年団と連携して丁寧に対応する','問題を放置してしまう']};render()};let ev=$('#event');if(ev)ev.onclick=()=>{let e=events.find(x=>x.week===state.week);if(e){state.dialog={name:'🎉 '+e.name,text:e.desc,choices:e.choices};render()}};let ny=$('#newyear');if(ny)ny.onclick=()=>{state.year++;state.week=1;state.appointed=false;render()};document.querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>{let d=state.dialog;let i=Number(b.dataset.answer);if(d.name.includes('校長室')&&i===1)advance('相談への対応を怠った',-27,-2,-12,-6,3);else advance(d.name+'：'+d.choices[i],i===0?8:5,4,4,-5,-1)});let close=$('[data-close]');if(close)close.onclick=()=>{state.dialog=null;render()}}
+let frame=0,raf=0,heroX=310,walking=false;function startCanvas(){cancelAnimationFrame(raf);let canvas=$('#world');if(!canvas)return;let ctx=canvas.getContext('2d');if(!ctx)return;const w=720,h=450;canvas.width=w*devicePixelRatio;canvas.height=h*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);let people=npcs[state.scene].map((n,i)=>({x:220+i*240,y:310,color:['#e8a67d','#8bb7ef','#cf93c2'][i%3],name:n[0]}));function polygon(points,color){ctx.fillStyle=color;ctx.beginPath();ctx.moveTo(...points[0]);for(let i=1;i<points.length;i++)ctx.lineTo(...points[i]);ctx.closePath();ctx.fill()};function rect(x,y,w,h,c){ctx.fillStyle=c;ctx.fillRect(x,y,w,h)};function ellipse(x,y,rx,ry,c){ctx.fillStyle=c;ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fill()};function char(x,y,color,name,bob=0){ellipse(x,y+8,29,10,'#12334b45');rect(x-12,y-56+bob,24,40,color);rect(x-10,y-17+bob,7,22,'#24344e');rect(x+3,y-17+bob,7,22,'#24344e');ellipse(x,y-70+bob,16,19,'#efc5a2');ellipse(x,y-85+bob,16,8,'#2d3c50');ellipse(x-5,y-71+bob,1.7,1.8,'#263e53');ellipse(x+5,y-71+bob,1.7,1.8,'#263e53');ctx.font='bold 13px system-ui';let width=ctx.measureText(name).width;rect(x-width/2-8,y-120,width+16,24,'#0b2b45d9');ctx.fillStyle='white';ctx.textAlign='center';ctx.fillText(name,x,y-103)}
+function draw(){frame++;ctx.clearRect(0,0,w,h);let t=frame/60;let room=state.scene;if(room==='教室'){rect(0,0,w,h,'#b9d8e4');polygon([[0,270],[720,270],[720,450],[0,450]],'#bd9472');polygon([[0,270],[720,270],[720,285],[0,285]],'#e3b18a');rect(50,55,325,150,'#376c65');rect(57,62,311,136,'#407d74');ctx.strokeStyle='#c7e9dc';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(92,104);ctx.lineTo(180,104);ctx.moveTo(92,129);ctx.lineTo(260,129);ctx.stroke();rect(500,50,165,150,'#f6f3dc');rect(515,65,135,120,'#8bd1f3');rect(580,65,6,120,'#f6f3dc');rect(515,120,135,6,'#f6f3dc');for(let i=0;i<4;i++){let x=80+i*155;polygon([[x,308],[x+90,308],[x+110,333],[x+20,333]],'#a56b49');rect(x+20,332,9,35,'#5d443d');rect(x+92,332,9,35,'#5d443d')}}else if(room==='職員室'){rect(0,0,w,h,'#d7dfdf');polygon([[0,285],[720,285],[720,450],[0,450]],'#9aafbd');rect(60,40,175,190,'#afc9dc');rect(70,52,155,166,'#77b8d8');rect(142,52,8,166,'#d7e5e9');rect(295,70,170,135,'#8293a1');for(let i=0;i<3;i++)rect(312,85+i*40,135,25,'#d3dbe2');for(let i=0;i<3;i++){let x=75+i*215;polygon([[x,310],[x+145,310],[x+170,338],[x+25,338]],'#8e684c');rect(x+32,338,12,33,'#5d4d48');rect(x+146,338,12,33,'#5d4d48');rect(x+55,295,45,13,'#32485c')}}else{rect(0,0,w,h,'#d6e4ea');polygon([[0,250],[720,250],[720,450],[0,450]],'#a4b7c1');for(let i=0;i<4;i++){rect(40+i*190,50,120,180,'#b7d4e5');rect(55+i*190,67,90,140,'#74b3d4');rect(95+i*190,67,5,140,'#e3eef1')}rect(0,242,720,16,'#e7f2f5')}
+people.forEach((p,i)=>char(p.x+Math.sin(t*.9+i)*9,p.y+Math.sin(t+i)*3,p.color,p.name,Math.sin(t*2+i)*2));char(heroX,388,'#305c90','あなた',Math.sin(t*3)*2);if(walking){heroX+=1.8;if(heroX>680)heroX=40}raf=requestAnimationFrame(draw)}
+canvas.onclick=e=>{let r=canvas.getBoundingClientRect();let x=(e.clientX-r.left)/r.width*720,y=(e.clientY-r.top)/r.height*450;let idx=people.findIndex(p=>Math.abs(x-(p.x+Math.sin(frame/60*.9)*9))<52&&y>p.y-135&&y<p.y+25);if(idx>=0)openNpc(idx);else {heroX=Math.max(30,Math.min(690,x));}};canvas.ontouchstart=()=>{};draw()}
+
+// Ver.2.4: 組番号を正規化し、全学級と教員を同じ編成データから表示する。
+const TL_NAMES=['山本','田中','佐藤','小林','森','中村','藤原','井上','松本','清水','高橋','伊藤','加藤','山田','渡辺','岡田','西村','吉田','石田','木村','近藤','坂本','大西','村上'];
+const TL_LICENSES=['国語','数学','英語','理科','社会','体育','宗教','家庭科','情報','音楽','美術','書道'];
+function tlTrack(g,n){if(n===1)return 'A';if(g===1)return n>=11?'特':'P';if(n>=11){if(g===2)return n===11?'特理':'特文';return n===11?'特理・国文':'特私文'}if(n===4)return 'P英専';if(n===2||n===3)return 'P理';return 'P文'}
+function tlLabel(s,g,n){return `${s}${g}年${n}組${s==='高校'?'（'+tlTrack(g,n)+'）':''}`}
+function tlKey(g,n){if(n===1)return 'A'+g;if(n>=11){if(g===1)return '特1';if(g===2)return '特2'+(n===11?'理':'文');return '特3'+(n===11?'理':'文')}if(g===1)return 'P1';return 'P'+g+(n===4?'英専':n===2||n===3?'理':'文')}
+function tlRooms(school){const a=[];for(let g=1;g<=3;g++)for(let n=1;n<=(school==='高校'?12:3);n++)a.push({id:`${school}-${g}-${n}`,school,grade:g,num:n,label:tlLabel(school,g,n),key:school==='高校'?tlKey(g,n):null});return a}
+function tlFamily(sub){if(sub==='LHR'||sub==='総合的な探究')return '担任';if(sub.includes('理数研究'))return '理科';if(sub==='芸術Ⅰ')return '音楽';if(sub.includes('日本史')||sub.includes('世界史')||sub==='公共'||sub.includes('地理')||sub.includes('歴史')||sub.includes('政治')||sub==='科学と人間生活'&&false)return '社会';if(sub.includes('英語')||sub.includes('論理・表現'))return '英語';if(sub.includes('国語')||sub.includes('古典')||sub.includes('文学')||sub.includes('言語文化'))return '国語';if(sub.includes('数学'))return '数学';if(['化学','化学基礎','生物','生物基礎','物理','物理基礎','地学基礎','物理／生物','理科演習','科学と人間生活'].includes(sub))return '理科';if(['体育','保健'].includes(sub))return '体育';if(sub==='宗教')return '宗教';if(sub==='家庭基礎')return '家庭科';if(sub==='情報Ⅰ')return '情報';if(sub==='発展演習'||sub.startsWith('選択'))return '選択';return '国語'}
+function tlExpand(sub,room,index){if(sub==='日本史探究／世界史探究')return room.num%2?'日本史探究':'世界史探究';if(sub==='物理／生物')return room.num%2?'物理':'生物';if(sub==='芸術Ⅰ')return room.num===1?'音楽':(['音楽','美術','書道'][room.num%3]);if(sub==='発展演習')return ['数学演習','英語演習','国語演習','理科演習'][index%4];if(sub==='選択講座'||sub==='選択講座・学校設定科目'){const track=room.key.includes('理')?'理':room.key.includes('英専')?'英':'文';return (track==='理'?['数学演習','理科演習','英語演習']:track==='英'?['英語演習','国語演習','社会演習']:['国語演習','英語演習','社会演習'])[index%3]}return sub}
+function tlFamilyExpanded(sub){if(sub==='音楽'||sub==='美術'||sub==='書道')return sub;if(sub==='社会演習')return '社会';if(sub==='国語演習')return '国語';if(sub==='英語演習')return '英語';if(sub==='数学演習')return '数学';if(sub==='理科演習')return '理科';return tlFamily(sub)}
+function tlDeputyRooms(s,g,n){if(s==='高校'&&n>=8&&n<=10)return [8,9,10];if(s==='高校'&&n>=11)return [11,12];if(s==='中学')return n===3?[2,3]:[1,2];if(n===1)return [1,2];if(n<=3)return [2,3];if(n<=5)return [4,5];if(n<=7)return [6,7];return [8,9,10]}
+function tlDeputyName(s,g,n){return s==='高校'&&n>=8&&n<=10?'プログレスコース長':s==='高校'&&g===3&&n>=11?'特進コース長':`${g}年副担任`}
+function tlTeacher(id,lic,training){return {id,name:id==='ME'?'あなた':id+'先生',license:lic,training:resolveTraining(training,state.school,state.grade,id.length),lessons:[],homerooms:[],deputyRooms:[]}}
+function tlBuild(){const rooms=tlRooms(state.school),mine=rooms.find(r=>r.id===state.myRoomId)||rooms[0];const staff=[];const me=tlTeacher('ME',state.licenses[0]||'理科',state.trainingDay);me.licenses=state.licenses.slice();staff.push(me);
+// 科目別に複数教員を確保し、学年・クラス担任を先に固定。
+for(const lic of TL_LICENSES)for(let i=0;i<(lic==='数学'||lic==='英語'||lic==='国語'?12:lic==='理科'||lic==='社会'?10:lic==='体育'?7:lic==='宗教'?5:4);i++){const id=TL_NAMES[(i+TL_LICENSES.indexOf(lic)*3)%TL_NAMES.length]+String(i+1)+'・'+lic;staff.push(tlTeacher(id,lic,DAYS[(i+TL_LICENSES.indexOf(lic)*2)%6]))}
+const homeroom={};const deputy={};const used=new Set();if(state.position==='担任'){homeroom[mine.id]=me;me.homerooms.push(mine.id);used.add('ME')}
+for(const r of rooms){if(homeroom[r.id])continue;let elig=staff.filter(t=>t.id!=='ME'&&!used.has(t.id)&&(!r.key||r.key.includes('理')?['理科','数学','体育','音楽','美術','書道'].includes(t.license):r.key==='P2英専'||r.key==='P3英専'?t.license==='英語':true));if(!elig.length)elig=staff.filter(t=>t.id!=='ME'&&!used.has(t.id));const t=elig[0];if(t){homeroom[r.id]=t;t.homerooms.push(r.id);used.add(t.id)}}
+// 副担任は同学年2学級、P8-10組はコース長3学級。
+for(const r of rooms){const nums=tlDeputyRooms(r.school,r.grade,r.num),tag=`${r.grade}:${nums.join('-')}`;let t=staff.find(x=>x.deputyTag===tag);if(!t){if(state.position==='副担任'&&r.grade===mine.grade&&nums.includes(mine.num)&&!me.deputyTag){t=me}else{t=staff.find(x=>x.id!=='ME'&&!x.deputyTag&&!x.homerooms.length&&x.license==='国語')||staff.find(x=>x.id!=='ME'&&!x.deputyTag&&!x.homerooms.length)}if(t)t.deputyTag=tag}if(t){deputy[r.id]=t;if(!t.deputyRooms.includes(r.id))t.deputyRooms.push(r.id)}}
+if(state.position==='副担任'&&!me.deputyRooms.length){for(const r of rooms.filter(x=>x.grade===mine.grade&&tlDeputyRooms(x.school,x.grade,x.num).includes(mine.num))){deputy[r.id]=me;me.deputyRooms.push(r.id)}}
+// 全クラスの科目・教員を確定。研修日は担当教員に授業を入れない。
+const grids={};const notes=[];const occupied={};for(const t of staff)occupied[t.id]=new Set();const limits=state.school==='高校'?DAY_LIMITS: {P:[6,6,6,6,6,4]};
+for(const r of rooms){const lim=state.school==='高校'?DAY_LIMITS[r.num>=11?'特':r.num===1?'A':'P']:[6,6,6,6,6,4];grids[r.id]=DAYS.map((_,d)=>Array.from({length:lim[d]},()=>null));const grid=grids[r.id];const fixed=(d,p,sub)=>{if(p<=lim[d])grid[d][p-1]={sub,teacher:homeroom[r.id]||null,fixed:true}};fixed(1,6,'LHR');if(state.school==='高校')fixed(1,5,'総合的な探究');if(state.school==='高校'&&r.key==='P2理'||state.school==='高校'&&r.key==='P3理'){grid[4][4]={sub:'理数研究',teacher:null,fixed:true};grid[4][5]={sub:'理数研究',teacher:null,fixed:true}}
+const raw=state.school==='高校'?CURRICULUM[r.key]||{}:{'国語Ⅰ':3,'国語Ⅱ':2,'代数':3,'幾何':2,'英語A':3,'英語B':2,'理科A':3,'理科B':2,'体育':3,'宗教':1,'LHR':1,'音楽':1,'美術':1,'書道':1,'技術家庭':2,'地理':2,'歴史':1,'公民':1};const queue=[];for(const [sub,count]of Object.entries(raw)){if(sub==='LHR'||sub==='総合的な探究')continue;for(let i=0;i<count;i++)queue.push(tlExpand(sub,r,i))}const positions=[];for(let d=0;d<6;d++)for(let p=0;p<lim[d];p++)if(!grid[d][p])positions.push([d,p]);
+// 年度・組番号ごとの再現可能なシャッフル。固定授業は移動しない。
+let rngSeed=((state.timetableSeed||2371)+state.year*1723+r.grade*179+r.num*991)>>>0;
+const rand=()=>{rngSeed=(Math.imul(1664525,rngSeed)+1013904223)>>>0;return rngSeed/4294967296};
+for(let i=queue.length-1;i>0;i--){let j=Math.floor(rand()*(i+1));[queue[i],queue[j]]=[queue[j],queue[i]]}
+for(let i=positions.length-1;i>0;i--){let j=Math.floor(rand()*(i+1));[positions[i],positions[j]]=[positions[j],positions[i]]}
+// 固定授業を除く授業を、教員の重複を避けながら配置。
+for(const [d,p]of positions){let picked=-1,teacher=null,score=-1e6;for(let i=0;i<queue.length;i++){const sub=queue[i],lic=tlFamilyExpanded(sub);let candidates=staff.filter(t=>(t.licenses||[t.license]).includes(lic)&&t.training!==DAYS[d]&&!occupied[t.id].has(`${d}-${p}`));if(!candidates.length)continue;const prefer=(t)=>{let v=-t.lessons.length*1.5;if(t.id==='ME'){v+=state.wishSubjects.includes(sub)?22:5;if((me.homerooms.includes(r.id)||me.deputyRooms.includes(r.id)))v+=90;else if(t.lessons.length>20)v-=80}else if(t.homerooms.includes(r.id))v+=10;return v};candidates.sort((a,b)=>prefer(b)-prefer(a));const cand=candidates[0],v=prefer(cand)+(queue.length-i)*.001;if(v>score){score=v;picked=i;teacher=cand}}if(picked<0){grid[d][p]={sub:'未配置',teacher:null};continue}const sub=queue.splice(picked,1)[0];grid[d][p]={sub,teacher};occupied[teacher.id].add(`${d}-${p}`);teacher.lessons.push({room:r.id,label:r.label,sub,d,p:p+1})}
+// 理数研究は科目担当を追加し、通常科目を削る場合は不足を記録。
+for(let d=0;d<6;d++)for(let p=0;p<grid[d].length;p++){const c=grid[d][p];if(!c||!c.fixed)continue;const lic=c.sub==='理数研究'?'理科':null;let t=lic?staff.filter(x=>(x.licenses||[x.license]).includes(lic)&&x.training!==DAYS[d]&&!occupied[x.id].has(`${d}-${p}`)).sort((a,b)=>(b.id==='ME'?100:0)-(a.id==='ME'?100:0)||a.lessons.length-b.lessons.length)[0]:c.teacher;if(t){c.teacher=t;occupied[t.id].add(`${d}-${p}`);t.lessons.push({room:r.id,label:r.label,sub:c.sub,d,p:p+1})}}
+if(queue.length)notes.push(`${r.label}：${queue.length}コマ未配置（理数研究など固定枠との競合）`)}
+return {rooms,staff,me,grids,homeroom,deputy,notes}}
+function tlDisplayGrid(grid,teacherOnly=false){let out='<div class="scroll"><table class="timetable"><thead><tr><th>限</th>'+DAYS.map(d=>`<th>${d}</th>`).join('')+'</tr></thead><tbody>';for(let p=0;p<7;p++){out+=`<tr><th>${p+1}</th>`;for(let d=0;d<6;d++){const c=grid[d]&&grid[d][p];out+=`<td class="${c&&c.fixed?'fixed':''}">${c?esc(c.sub)+(c.label?'<br><small>'+esc(c.label)+'</small>':'')+(c.teacher&&!teacherOnly?'<br><small>'+esc(c.teacher.name)+'</small>':''):'—'}</td>`}out+='</tr>'}return out+'</tbody></table></div>'}
+function tlSchedule(){const a=state.schoolPlan||tlBuild(),r=a.rooms.find(x=>x.id===state.selectedRoom)||a.rooms.find(x=>x.id===state.myRoomId)||a.rooms[0];const mygrid=DAYS.map((_,d)=>Array.from({length:7},(_,p)=>a.me.lessons.find(x=>x.d===d&&x.p===p+1)||null));const own=a.me.lessons.length;const options=a.rooms.map(x=>`<option value="${esc(x.id)}" ${x.id===r.id?'selected':''}>${esc(x.label)}</option>`).join('');return `<div class="note">${esc(trainingNote())}。研修日の授業は配置しません。<br>自分の授業：週${own}コマ／担当${new Set(a.me.lessons.map(x=>x.room)).size}クラス</div><h3>👩‍🏫 自分の時間割</h3>${tlDisplayGrid(mygrid,true)}<h3>🏫 学級時間割</h3><label class="sub">表示するクラス <select id="viewRoom" style="width:100%;padding:9px;background:#183a56;color:white;border-radius:9px">${options}</select></label><p class="sub">${esc(r.label)} ／ 担任：${esc(a.homeroom[r.id]?.name||'未配置')} ／ 副担任：${esc(a.deputy[r.id]?.name||'未配置')}</p>${tlDisplayGrid(a.grids[r.id])}<h3>担当教員一覧</h3><div class="scroll">${Object.entries(CURRICULUM[r.key]||{}).map(([sub,n])=>`<div class="listItem">${esc(sub)}：週${n}コマ</div>`).join('')}</div>${a.notes.length?`<div class="note">未解決の編成課題：${esc(a.notes.slice(0,5).join('／'))}</div>`:''}<p class="sub">同時刻の教員重複と研修日を避ける試作自動編成です。選択講座の並行開講や全教員の持ちコマ均等化は未完成です。</p>`}
+function tlAssign(){const c=chooseClass();const n=state.school==='中学'?1:state.course==='A'?1:state.course==='特'?(c.track==='理'?11:12):state.grade===1?5:c.track==='理'?2:c.track==='英専'?4:5;state.myRoomId=`${state.school}-${state.grade}-${n}`;state.room=tlLabel(state.school,state.grade,n);state.position=state.role==='お任せ'?(state.year%4===0?'副担任':'担任'):state.role;state.assignment=state.dept==='お任せ'?['教務','進路指導','生活指導','ICT'][state.year%4]:state.dept;state.trainingDay=state.trainingDay==='お任せ'?DAYS[(state.year+state.grade+n)%6]:state.trainingDay;if(!clubOptions().includes(state.club)||state.club==='お任せ')state.club='吹奏楽部';const deputyNumbers=tlDeputyRooms(state.school,state.grade,n);state.deputyName=tlDeputyName(state.school,state.grade,n);state.deputyRooms=deputyNumbers.map(k=>tlLabel(state.school,state.grade,k));state.schoolPlan=tlBuild();const a=state.schoolPlan;const assigned=[...new Set(a.me.lessons.map(x=>x.room))];state.classes=assigned.map(id=>a.rooms.find(r=>r.id===id)?.label||id);state.subject=[...new Set(a.me.lessons.map(x=>x.sub))].join('・')||'未配置';state.selectedRoom=state.myRoomId;state.appointed=true;state.history.unshift(`${state.year}年目：${state.room} ${state.position}に着任。研修日 ${state.trainingDay}曜。担当${state.classes.length}クラス`);save()}
+// 保存時は循環参照のない構造だけを保持し、起動時に編成を再生成する。
+const tlOldSave=save;save=function(){try{const clean={...state,schoolPlan:undefined,dialog:null};localStorage.setItem('teacherLife27Windows',JSON.stringify({version:2,state:clean}))}catch(e){}};
+assign=tlAssign;schedule=tlSchedule;classLabel=tlLabel;
+const tlOldSide=side;side=function(){let html=tlOldSide();if(state.tab==='人事'){const a=state.schoolPlan||tlBuild();const info=`<h3>学校全体の担任・副担任（AI自動配置）</h3><div class="scroll">${a.rooms.map(r=>`<div class="listItem">${esc(r.label)}<br>担任：${esc(a.homeroom[r.id]?.name||'未配置')}／副担任：${esc(a.deputy[r.id]?.name||'未配置')}</div>`).join('')}</div>`;html=html.replace('<button class="btn alt" id="newyear">',info+'<button class="btn alt" id="newyear">')}return html};
+const tlOldBind=bind;bind=function(){tlOldBind();const e=$('#viewRoom');if(e)e.onchange=()=>{state.selectedRoom=e.value;render()}};
+if(state.appointed){if(!state.myRoomId){state.appointed=false}else{state.room=tlRooms(state.school).find(r=>r.id===state.myRoomId)?.label||state.room;state.schoolPlan=tlBuild();state.classes=[...new Set(state.schoolPlan.me.lessons.map(x=>x.label))]}}
+
+document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')heroX=Math.max(30,heroX-22);if(e.key==='ArrowRight')heroX=Math.min(690,heroX+22)});render();
+
+// Ver 2.4: 教員検索、時間割診断、データのバックアップと復元
+function tlAudit(){const a=state.schoolPlan||tlBuild(),issues=[];let blanks=0,conflicts=0,training=0,missingHomeroom=0;const byTeacher=new Map();for(const r of a.rooms){if(!a.homeroom[r.id])missingHomeroom++;for(let d=0;d<6;d++)for(let p=0;p<a.grids[r.id][d].length;p++){const c=a.grids[r.id][d][p];if(!c||c.sub==='未配置'||!c.teacher){blanks++;continue}const key=c.teacher.id+'|'+d+'|'+p;byTeacher.set(key,(byTeacher.get(key)||0)+1);if(c.teacher.training===DAYS[d])training++}}for(const v of byTeacher.values())if(v>1)conflicts+=v-1;const myClasses=new Set(a.me.lessons.map(x=>x.room));const own=[...a.me.homerooms,...a.me.deputyRooms];const noOwn=own.filter(id=>!myClasses.has(id));if(blanks)issues.push('未配置・未確定の授業：'+blanks+'枠');if(conflicts)issues.push('教員の同時刻重複：'+conflicts+'件');if(training)issues.push('研修日と授業の重複：'+training+'件');if(missingHomeroom)issues.push('担任未配置：'+missingHomeroom+'学級');if(noOwn.length)issues.push('担任・副担任なのに教科授業がない学級：'+noOwn.map(id=>a.rooms.find(r=>r.id===id)?.label||id).join('、'));if(myClasses.size<5)issues.push('担当クラス数が5未満：'+myClasses.size+'クラス');return {issues,blanks,conflicts,training,missingHomeroom,classes:myClasses.size,rooms:a.rooms.length,staff:a.staff.length}}
+function tlAuditHTML(){const q=tlAudit();return `<h3>🔎 時間割・人事の自動診断</h3><div class="note">対象：${q.rooms}学級／教員${q.staff}名／自分の担当${q.classes}クラス<br>${q.issues.length?q.issues.map(x=>'⚠ '+esc(x)).join('<br>'):'✓ 検査項目で問題は見つかりませんでした'}</div><p class="sub">未配置や重複が残る場合は、完全な編成ができていないことを示します。問題を隠して「確定」とは表示しません。</p>`}
+function tlStaffHTML(){const a=state.schoolPlan||tlBuild();return `<h3>🔍 教員名簿・担当授業</h3><label class="sub">教員を選択<select id="staffView" style="display:block;width:100%;padding:10px;background:#183a56;color:white;border-radius:9px;margin-top:6px">${a.staff.map(t=>`<option value="${esc(t.id)}" ${state.staffView===t.id?'selected':''}>${esc(t.name)}（${esc(t.license)}）</option>`).join('')}</select></label>${(()=>{const t=a.staff.find(x=>x.id===state.staffView)||a.staff[0];const rows=t.lessons.slice().sort((x,y)=>x.d-y.d||x.p-y.p);return `<div class="note">${esc(t.name)}／担当${new Set(rows.map(x=>x.room)).size}クラス・週${rows.length}コマ／研修日：${esc(t.training)}曜<br>担任：${t.homerooms.map(id=>esc(a.rooms.find(r=>r.id===id)?.label||id)).join('、')||'なし'}<br>副担任：${t.deputyRooms.map(id=>esc(a.rooms.find(r=>r.id===id)?.label||id)).join('、')||'なし'}</div><div class="scroll">${rows.map(x=>`<div class="listItem">${esc(DAYS[x.d])}曜${x.p}限　${esc(x.label)}　${esc(x.sub)}</div>`).join('')||'<p class="sub">担当授業なし</p>'}</div>`})()}</div>`}
+function tlBackupHTML(){return `<h3>💾 セーブデータの管理</h3><p class="sub">ブラウザ内の自動保存に加えて、JSONファイルでバックアップできます。機種変更やSafariのデータ削除に備えられます。</p><button class="btn alt" id="exportSave">セーブデータをファイルに保存</button><label class="sub">セーブデータを復元<input id="importSave" type="file" accept=".json,application/json" style="display:block;margin:8px 0 12px;max-width:100%"></label>`}
+const tlSideBeforeExtra=side;side=function(){let html=tlSideBeforeExtra();if(state.tab==='時間割')html+=tlAuditHTML();if(state.tab==='人事')html+=tlStaffHTML()+tlBackupHTML();return html};
+const tlBindBeforeExtra=bind;bind=function(){tlBindBeforeExtra();const sv=$('#staffView');if(sv)sv.onchange=()=>{state.staffView=sv.value;render()};const ex=$('#exportSave');if(ex)ex.onclick=()=>{save();const raw=localStorage.getItem('teacherLife27Windows');if(!raw)return alert('セーブデータが見つかりません');const blob=new Blob([raw],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='teacher_life_save.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};const im=$('#importSave');if(im)im.onchange=async()=>{const f=im.files?.[0];if(!f)return;try{if(f.size>1000000)throw Error('ファイルが大きすぎます');const data=JSON.parse(await f.text());if(data.version!==2||!data.state||!Array.isArray(data.state.licenses)||!['中学','高校'].includes(data.state.school))throw Error('対応していないセーブデータです');if(!confirm('現在のデータを上書きして復元しますか？'))return;localStorage.setItem('teacherLife27Windows',JSON.stringify({version:2,state:{...data.state,schoolPlan:undefined,dialog:null}}));location.reload()}catch(e){alert('復元できません：'+e.message)}}};
+
+// Ver.2.5: 年度更新、試験・成績、部活動年間運営、研修日制限、希望採否
+const TRAIN_BLOCK={'中学':'月','1':'水','2':'金','3':'木'};
+function allowedTraining(s=state.school,g=state.grade){return DAYS.filter(d=>d!==TRAIN_BLOCK[s==='中学'?'中学':String(g)])}
+function resolveTraining(day,s=state.school,g=state.grade,seed=0){const opts=allowedTraining(s,g);return opts.includes(day)?day:opts[(state.year+Number(g)+seed)%opts.length]}
+function seededChoice(salt,rate=.65){let v=(state.year*97+state.grade*37+state.week*11+salt*43+state.licenses.join('').length*7)%100;return v<rate*100}
+const wishRecord=()=>state.wishResult||{};
+const prevSetup=setup;
+setup=function(){let h=prevSetup();h=h.replace('<label>研修日<select id="trainingDay">','<label>研修日（校種・学年により選択不可）<select id="trainingDay">');h=h.replace(/options\(\['お任せ',\.\.\.DAYS\],state.trainingDay\)/g,"options(['お任せ',...allowedTraining()],state.trainingDay)");h=h.replace('校長の辞令を受け取る →','希望を提出して辞令を受け取る →');h=h.replace('希望が通らない場合や、専門外の科目を担当する場合もあります。','希望は必ずしも通りません。辞令で採用・不採用の結果を確認できます。');return h};
+const prevAssign=assign;
+assign=function(){const requested={school:state.school,grade:state.grade,course:state.course,role:state.role,dept:state.dept,club:state.club,trainingDay:state.trainingDay,subjects:[...state.wishSubjects]};
+// 学年・コースの希望も校長判断で変わることがある（免許制約は既存編成で検証）
+if(!seededChoice(1,.78)){state.grade=(state.grade%3)+1}
+if(state.school==='高校'&&!seededChoice(2,.82)){state.course=['P','特','A'][(state.year+state.grade)%3]}
+if(state.role!=='お任せ'&&!seededChoice(3,.70)){state.role=state.role==='担任'?'副担任':state.role==='副担任'?'担任':'担任'}
+if(state.dept!=='お任せ'&&!seededChoice(4,.68)){state.dept=['教務','進路指導','生活指導','ICT','特活指導'][(state.year+state.grade)%5]}
+if(state.club!=='お任せ'&&!seededChoice(5,.72)){state.club='お任せ'}
+if(state.trainingDay!=='お任せ'&&!seededChoice(6,.76)){state.trainingDay='お任せ'}
+state.trainingDay=resolveTraining(state.trainingDay,state.school,state.grade,3);
+prevAssign();
+state.trainingDay=resolveTraining(state.trainingDay,state.school,state.grade,3);
+if(state.schoolPlan&&state.schoolPlan.me.training!==state.trainingDay){state.schoolPlan=tlBuild();}
+state.wishResult={requested,actual:{school:state.school,grade:state.grade,course:state.course,role:state.position,dept:state.assignment,club:state.club,trainingDay:state.trainingDay},subjectNote:'科目は免許・学級履修・空き時間を優先して決定'};
+state.examGrades=state.examGrades||{};state.clubResults=state.clubResults||[];state.yearRecords=state.yearRecords||[];
+state.history.unshift('校長が希望調査を審査し、採否を決定しました。');save()};
+// 学年・校種を切り替えると研修日候補を更新
+const prevBind=bind;
+bind=function(){prevBind();for(const k of ['school','grade']){const el=$('#'+k);if(!el)continue;const original=el.onchange;el.onchange=()=>{original?.();if(state.trainingDay!=='お任せ'&&!allowedTraining().includes(state.trainingDay))state.trainingDay='お任せ';render()}}};
+function renderWishResults(){const w=wishRecord();if(!w.requested)return '';const map=[['school','校種'],['grade','学年'],['course','コース'],['role','学級担当'],['dept','校務分掌'],['club','部活動'],['trainingDay','研修日']];return '<h3>📨 人事希望の審査結果</h3><div class="scroll">'+map.map(([k,label])=>{let a=String(w.requested[k]),b=String(w.actual[k]);return `<div class="listItem">${label}：希望 ${esc(a)} → 辞令 ${esc(b)} <b style="color:${a===b?'#a4f1d2':'#ffd47b'}">${a===b?'採用':'調整・不採用'}</b></div>`}).join('')+'</div><p class="sub">科目希望も必ずしも採用されず、免許と教育課程を優先します。</p>'}
+const EXAMS=[{week:9,name:'1学期期末考査'},{week:20,name:'2学期中間考査'},{week:27,name:'2学期期末考査'},{week:38,name:'学年末考査'}];
+function examView(){const next=EXAMS.find(x=>x.week>=state.week)||EXAMS[0];const logs=Object.entries(state.examGrades||{}).filter(([k])=>k.startsWith(state.year+':'));return `<h3>📝 定期考査・成績管理</h3><div class="note">次の考査：第${next.week}週 ${next.name}。授業力・信頼度・準備状況が評価に影響します。</div><button class="btn alt" id="examPrepare">問題作成・採点準備（1週間）</button><button class="btn" id="examHold" ${state.week<next.week?'disabled style="opacity:.5"':''}>${next.name}を実施して採点</button><div class="scroll">${logs.map(([k,v])=>`<div class="listItem">${esc(v.name)}：学級平均 ${v.average}点／評価 ${esc(v.rating)}／${esc(v.note)}</div>`).join('')||'<p class="sub">今年度の成績記録はまだありません。</p>'}</div><button class="btn alt" id="examMeeting">成績会議・進路指導（1週間）</button>`}
+const CLUB_CAL=[{week:6,name:'新入部員歓迎・年間計画'},{week:14,name:'夏季大会・コンクール'},{week:21,name:'文化祭・秋の発表'},{week:30,name:'冬季練習・遠征'},{week:39,name:'卒業生送別・引継ぎ'}];
+function clubView(){const upcoming=CLUB_CAL.find(x=>x.week>=state.week)||CLUB_CAL[0];const logs=(state.clubResults||[]).filter(x=>x.year===state.year);return `<h3>🎺 部活動の年間運営</h3><div class="note">顧問：${esc(state.club)}／次の予定：第${upcoming.week}週 ${upcoming.name}</div><button class="btn alt" id="clubPractice">練習指導・部員面談（1週間）</button><button class="btn" id="clubCompete" ${state.week<upcoming.week?'disabled style="opacity:.5"':''}>${upcoming.name}を実施</button><button class="btn alt" id="clubCamp">合宿・遠征の計画（1週間）</button><div class="scroll">${logs.map(x=>`<div class="listItem">第${x.week}週 ${esc(x.name)}：${esc(x.result)}</div>`).join('')||'<p class="sub">今年度の活動記録はまだありません。</p>'}</div>`}
+function yearView(){return `<h3>🎓 進級・年度更新</h3><p class="sub">現在 ${state.year}年目・第${state.week}週。学級は進級し、希望と人事配置を再審査します。P英専・特進・理系の持ち上がりを優先しますが、確定ではありません。</p><div class="note">年度末の第40週を終えると、新年度の希望調査に移ります。途中で年度を飛ばす場合は確認が必要です。</div><button class="btn alt" id="yearFinish">年度を終了して次年度へ</button><div class="scroll">${(state.yearRecords||[]).map(x=>`<div class="listItem">${esc(x)}</div>`).join('')}</div>`}
+const prevSide=side;
+side=function(){let html=prevSide();if(!state.appointed)return html;const extra=`<div class="panel" style="margin-top:12px"><div class="nav" style="grid-template-columns:repeat(3,1fr)">${[['考査','exam'],['部活運営','club'],['年度更新','year']].map(([name,id])=>`<button data-extra="${id}" class="${state.extraTab===id?'active':''}">${name}</button>`).join('')}</div>${state.extraTab==='exam'?examView():state.extraTab==='club'?clubView():state.extraTab==='year'?yearView():''}${state.tab==='人事'?renderWishResults():''}</div>`;return html+extra};
+function rollYear(){state.yearRecords=state.yearRecords||[];state.yearRecords.unshift(`${state.year}年度 ${state.room}・${state.position}：授業${state.skill}／信頼${state.trust}／部活${(state.clubResults||[]).filter(x=>x.year===state.year).length}行事`);const prev=state.grade;const track=state.course;state.year++;state.week=1;state.appointed=false;state.schoolPlan=null;state.selectedRoom=null;state.staffView=null;state.extraTab='';state.grade=prev===3?1:prev+1;state.course=track;state.trainingDay='お任せ';state.history.unshift('年度更新：進級・クラス替え・新年度人事希望の提出へ。');save();render()}
+const prevAdvance=advance;
+advance=function(...args){if(state.week===40){state.week=39;prevAdvance(...args);if(state.year>1&&!state.appointed){state.year--;rollYear()}else if(!state.appointed){rollYear()}return}prevAdvance(...args)};
+const prevBind2=bind;
+bind=function(){prevBind2();document.querySelectorAll('[data-extra]').forEach(b=>b.onclick=()=>{state.extraTab=b.dataset.extra;render()});const prep=$('#examPrepare');if(prep)prep.onclick=()=>advance('考査問題作成・採点基準の準備',0,6,3,-5);const hold=$('#examHold');if(hold)hold.onclick=()=>{const exam=EXAMS.find(x=>x.week>=state.week)||EXAMS[0];if(state.week<exam.week)return;const avg=Math.max(35,Math.min(95,Math.round(45+state.skill*.35+state.trust*.13+((state.week*7+state.year*11)%15)-7)));const rating=avg>=80?'A':avg>=65?'B':avg>=50?'C':'D';state.examGrades=state.examGrades||{};state.examGrades[`${state.year}:${exam.week}`]={name:exam.name,average:avg,rating,note:avg>=65?'学習到達度は概ね良好':'補習・個別面談を検討'};advance(`${exam.name}を実施し採点（平均${avg}点）`,3,5,4,-7)};const meeting=$('#examMeeting');if(meeting)meeting.onclick=()=>advance('成績会議と進路面談',5,2,7,-5);const practice=$('#clubPractice');if(practice)practice.onclick=()=>advance(`${state.club}の練習指導と部員面談`,5,3,2,-7);const compete=$('#clubCompete');if(compete)compete.onclick=()=>{const ev=CLUB_CAL.find(x=>x.week>=state.week)||CLUB_CAL[0];if(state.week<ev.week)return;const results=['優秀な成果','健闘','次回への課題が見つかった'];const result=results[(state.year+state.week+state.skill)%3];state.clubResults=state.clubResults||[];state.clubResults.push({year:state.year,week:state.week,name:ev.name,result});advance(`${state.club}：${ev.name}（${result}）`,6,3,4,-9)};const camp=$('#clubCamp');if(camp)camp.onclick=()=>advance(`${state.club}の合宿・遠征を企画`,3,2,5,-6);const finish=$('#yearFinish');if(finish)finish.onclick=()=>{if(confirm('今年度を終了し、次年度の人事希望へ進みますか？'))rollYear()};const ny=$('#newyear');if(ny)ny.onclick=()=>{if(confirm('今年度を終了して次年度へ進みますか？'))rollYear()}};
+// 新年度の希望画面に研修日制限を適用。既存セーブも補正する。
+if(state.appointed&&state.trainingDay&&!allowedTraining().includes(state.trainingDay)){state.trainingDay=resolveTraining('お任せ');state.schoolPlan=tlBuild();save()}
+
+// Ver.2.6: 教員キャリア・ライフイベント（ゲーム用の架空制度）
+const CAREER=['お任せ','一般教諭','主幹教諭','学年部長','教科主任','コース長','教頭','副校長','校長'];
+const RANK={'一般教諭':0,'主幹教諭':1,'学年部長':1,'教科主任':1,'コース長':1,'教頭':2,'副校長':3,'校長':4};
+state.age=Number(state.age)||25;
+state.careerWish=state.careerWish||'お任せ';
+state.careerRank=state.careerRank||'一般教諭';
+state.familyStatus=state.familyStatus||'独身';
+state.children=Number(state.children)||0;
+state.leaveWeeks=Number(state.leaveWeeks)||0;
+state.leaveType=state.leaveType||'';
+state.retired=Boolean(state.retired);
+state.careerLog=state.careerLog||[];
+state.salary=Number(state.salary)||380;
+function careerReview(){
+  const wish=state.careerWish;
+  let prev=state.careerRank;
+  if(wish!=='お任せ'&&CAREER.includes(wish)){
+    let requested=RANK[wish]??0,old=RANK[prev]??0;
+    let eligible=(requested<=old)||(state.year>=3+requested*4&&state.admin>=43+requested*8&&state.trust>=45);
+    let approved=eligible&&seededChoice(23+requested,requested>old?.48:.78);
+    if(approved)state.careerRank=wish;
+    state.careerLog.unshift(`${state.year}年目：${wish}を希望 → ${approved?'承認':'見送り'}（辞令：${state.careerRank}）`);
+  }else if(state.year>=7&&state.admin>=72&&seededChoice(51,.35)){
+    state.careerRank=state.careerRank==='一般教諭'?'主幹教諭':state.careerRank;
+    state.careerLog.unshift(`${state.year}年目：校長判断で${state.careerRank}を任命`);
+  }
+  state.salary=380+Math.max(0,state.year-1)*9+(RANK[state.careerRank]||0)*65;
+}
+function lifeSetup(){return `<div class="panel" style="margin-top:12px"><h3>🏛️ キャリア希望（校長・主幹教諭など）</h3><div class="field"><label>希望役職<select id="careerWish">${options(CAREER,state.careerWish)}</select></label><label>開始年齢<select id="startAge">${options(['22','25','30','35','40','45','50','55','60'],String(state.age))}</select></label></div><p class="sub">希望は必ず通るわけではありません。管理職は勤続年数・評価・空きポストを考慮したゲーム内審査です。</p></div>`}
+const oldSetup26=setup;
+setup=function(){let h=oldSetup26();return h.replace('<button class="btn" id="start">',lifeSetup()+'<button class="btn" id="start">')};
+function lifeView(){
+  const off=state.leaveWeeks>0;
+  return `<h3>🌱 キャリア・人生</h3><div class="listItem">年齢：${state.age}歳 ／ 勤続：${state.year}年目<br>役職：${esc(state.careerRank)}（希望：${esc(state.careerWish)}）<br>給与指標：年${state.salary}万円（ゲーム内仮設定）<br>家庭：${esc(state.familyStatus)} ／ 子ども：${state.children}人<br>状態：${state.retired?'定年退職':off?esc(state.leaveType)+'・残り'+state.leaveWeeks+'週':'勤務中'}</div>
+  <p class="sub">休業の取得で評価が下がることはありません。休業中の授業・学級対応は代替教員に引き継ぎます。結婚・出産・育児は任意です。</p>
+  ${state.retired?'<div class="note">教員人生を終えました。記録を振り返れます。</div>':`<div class="field"><label>次年度の希望役職<select id="careerWishLive">${options(CAREER,state.careerWish)}</select></label></div>
+  <button class="btn alt" id="marry" ${state.familyStatus==='既婚'?'disabled':''}>同僚との結婚イベント（任意）</button>
+  <button class="btn alt" id="birth" ${state.familyStatus!=='既婚'?'disabled':''}>家族が増えるイベント（任意）</button>
+  <button class="btn alt" id="maternity" ${off?'disabled':''}>産前産後休業を取得（12週間・ゲーム設定）</button>
+  <button class="btn alt" id="childcare" ${off?'disabled':''}>育児休業を取得（20週間・ゲーム設定）</button>
+  <button class="btn alt" id="returnWork" ${!off?'disabled':''}>休業を終えて復職</button>
+  <button class="btn alt" id="stepDown">役職の変更・降職を相談</button>
+  <button class="btn alt" id="retire" ${state.age<60?'disabled':''}>定年退職する（ゲーム設定：60歳〜）</button>`}
+  <div class="scroll">${state.careerLog.slice(0,12).map(x=>`<div class="listItem">${esc(x)}</div>`).join('')}</div>`;
+}
+const oldSide26=side;
+side=function(){const h=oldSide26();if(!state.appointed)return h;return h+`<div class="panel" style="margin-top:12px"><button class="btn alt" id="lifeToggle">🌱 キャリア・人生 ${state.showLife?'▲':'▼'}</button>${state.showLife?lifeView():''}</div>`};
+const oldBind26=bind;
+bind=function(){oldBind26();
+  const wish=$('#careerWish');if(wish)wish.onchange=()=>{state.careerWish=wish.value;save()};
+  const age=$('#startAge');if(age)age.onchange=()=>{state.age=Number(age.value);save()};
+  const live=$('#careerWishLive');if(live)live.onchange=()=>{state.careerWish=live.value;save();render()};
+  const toggle=$('#lifeToggle');if(toggle)toggle.onclick=()=>{state.showLife=!state.showLife;render()};
+  function on(id,fn){const b=$('#'+id);if(b)b.onclick=fn}
+  on('marry',()=>{if(state.familyStatus==='既婚')return;state.familyStatus='既婚';state.careerLog.unshift(`${state.age}歳：成人の同僚と結婚（任意イベント）`);save();render()});
+  on('birth',()=>{if(state.familyStatus!=='既婚')return;state.children++;state.careerLog.unshift(`${state.age}歳：家族が増えました`);save();render()});
+  function leave(type,weeks){if(state.leaveWeeks)return;state.leaveType=type;state.leaveWeeks=weeks;state.careerLog.unshift(`${state.age}歳：${type}開始。授業・学級対応は代替教員へ引継ぎ`);save();render()}
+  on('maternity',()=>leave('産前産後休業',12));on('childcare',()=>leave('育児休業',20));
+  on('returnWork',()=>{state.leaveWeeks=0;state.leaveType='';state.careerLog.unshift('復職：教員配置と担当授業を再調整');save();render()});
+  on('stepDown',()=>{if(!confirm('役職の変更・降職を希望しますか？'))return;state.careerRank='一般教諭';state.careerLog.unshift('本人の希望による役職変更：一般教諭へ');save();render()});
+  on('retire',()=>{if(state.age<60||!confirm('定年退職しますか？'))return;state.retired=true;state.careerLog.unshift(`${state.age}歳：定年退職。${state.year}年間の教員生活を終了`);save();render()});
+};
+
+const oldRoll26=rollYear;
+rollYear=function(...a){const oldAge=state.age;oldRoll26(...a);state.age=oldAge+1;if(state.age>=65){state.retired=true;state.careerLog.unshift(`${state.age}歳：教員生活を終えました（ゲーム設定）`)}save();render()};
+const oldAdvance26=advance;
+advance=function(...a){if(state.retired){alert('定年退職済みです。勤務記録を確認できます。');return}if(state.leaveWeeks>0){state.leaveWeeks=Math.max(0,state.leaveWeeks-1);state.history.unshift(`${state.leaveType}：代替教員が授業と学級を担当`);if(!state.leaveWeeks){state.careerLog.unshift('休業期間終了・復職');state.leaveType=''}const before=state.week;state.week++;if(state.week>40){state.week=40;rollYear();return}save();render();return}oldAdvance26(...a)};
+
+let lastCareerAppointed=Boolean(state.appointed);
+const oldRender26=render;
+render=function(){if(state.appointed&&!lastCareerAppointed){careerReview();lastCareerAppointed=true}if(!state.appointed)lastCareerAppointed=false;oldRender26()};
+
+
+// Ver 2.7: 経歴、雇用形態、懲戒審査、復職・再雇用、時間割再編、アニメーション
+const TL_CAREER_PATHS=['大学卒','大学院卒','一般企業から転職','他校から転職'];
+const TL_EMPLOYMENT=['お任せ','非常勤講師','常勤講師','専任教諭'];
+state.background=state.background||'大学卒';
+state.employmentWish=state.employmentWish||'お任せ';
+state.employment=state.employment||'専任教諭';
+state.disciplineUntil=Number(state.disciplineUntil)||0;
+state.disciplineHistory=state.disciplineHistory||[];
+state.timetableSeed=Number(state.timetableSeed)||2371;
+state.rehired=!!state.rehired;
+function tlCareerSetup(){return `<div class="panel" style="margin-top:12px"><h3>🎓 学歴・前職・採用希望</h3><div class="field"><label>これまでの経歴<select id="background27">${options(TL_CAREER_PATHS,state.background)}</select></label><label>希望雇用形態<select id="employmentWish27">${options(TL_EMPLOYMENT,state.employmentWish)}</select></label></div><p class="sub">経歴に応じて初期の経験・年齢が変わります。教員免許は別途必要です。希望した雇用形態で採用されない場合もあります。</p></div>`}
+const tlSetup27=setup;
+setup=function(){return tlSetup27().replace('<button class="btn" id="start">',tlCareerSetup()+'<button class="btn" id="start">')};
+function tlIsRestricted(){return state.year<state.disciplineUntil}
+function tlApplyEmployment(){const wish=state.employmentWish;
+const allowed=wish==='お任せ'?['非常勤講師','常勤講師','専任教諭']: [wish,'常勤講師','非常勤講師'];
+state.employment=seededChoice(76,.67)?allowed[0]:allowed[1+(state.year%Math.max(1,allowed.length-1))];
+if(state.background==='一般企業から転職'){state.skill=Math.max(state.skill,52);state.admin=Math.max(state.admin,55)}
+if(state.background==='大学院卒'){state.skill=Math.max(state.skill,60)}
+if(state.background==='他校から転職'){state.skill=Math.max(state.skill,65);state.trust=Math.max(state.trust,62)}
+if(tlIsRestricted()&&state.position==='担任'){state.position='担任なし';state.history.unshift('人事制限により担任を見送りました')}
+if(state.employment==='非常勤講師'){state.position='担任なし';state.careerRank='非常勤講師'}
+if(state.employment==='常勤講師'&&state.careerRank==='非常勤講師')state.careerRank='常勤講師';
+}
+const tlAssign27=assign;
+assign=function(){tlAssign27();tlApplyEmployment();state.schoolPlan=tlBuild();state.history.unshift(`採用辞令：${state.background}／${state.employment}`);save()};
+const tlReview27=careerReview;
+careerReview=function(){const before=state.careerRank;
+if(tlIsRestricted()){state.careerLog.unshift(`${state.year}年目：処分に伴う人事制限（${state.disciplineUntil}年目まで昇格・担任不可）`);return}
+if(state.employment==='非常勤講師'||state.employment==='常勤講師'){state.careerLog.unshift('専任登用後に管理職への昇進審査を行います');return}
+tlReview27();if(state.careerRank!==before)state.history.unshift(`昇進：${before} → ${state.careerRank}`)};
+function tlCareer27(){const remaining=Math.max(0,state.disciplineUntil-state.year);
+return `<div class="panel" style="margin-top:12px"><h3>🏛️ 採用・服務・キャリア</h3>
+<div class="listItem">経歴：${esc(state.background)}<br>雇用形態：${esc(state.employment)}<br>人事制限：${remaining?`あと${remaining}年度（昇格・担任不可）`:'なし'}<br>時間割：${state.year}年度の自動編成</div>
+<div class="field"><label>雇用形態の次年度希望<select id="employmentLive27">${options(TL_EMPLOYMENT,state.employmentWish)}</select></label></div>
+<button class="btn alt" id="applyPermanent27" ${state.employment==='専任教諭'||state.retired?'disabled':''}>📨 常勤・専任への登用を申請</button>
+<button class="btn alt" id="reschedule27">🔀 来年度の時間割を再編する（試行）</button>
+<button class="btn alt" id="incident27" ${state.retired?'disabled':''}>⚠️ 問題行動イベントを発生させる</button>
+${state.incidentPending?`<div class="note">申立て内容：${esc(state.incidentPending)}。事実確認が必要です。</div><button class="btn" id="investigate27">🔍 校長・教頭による事実確認</button>`:''}
+${state.retired&&!state.rehired?'<button class="btn" id="rehire27">📨 定年後の非常勤再雇用を申請</button>':''}
+<div class="scroll">${state.disciplineHistory.slice(0,8).map(x=>`<div class="listItem">${esc(x)}</div>`).join('')}</div>
+<p class="sub">処分はゲーム内の架空制度です。苦情だけでは処分せず、事実確認・弁明の機会を設けます。重大な違反が認定された場合に限り、期限付きの昇格・担任制限や降職が発生します。</p></div>`}
+const tlSide27=side;
+side=function(){return tlSide27()+(state.appointed&&state.tab==='人事'?tlCareer27():'')};
+const tlBind27=bind;
+bind=function(){tlBind27();
+function on(id,cb){let b=$('#'+id);if(b)b.onclick=cb}
+let bg=$('#background27');if(bg)bg.onchange=()=>{state.background=bg.value;save()};
+let ew=$('#employmentWish27');if(ew)ew.onchange=()=>{state.employmentWish=ew.value;save()};
+let el=$('#employmentLive27');if(el)el.onchange=()=>{state.employmentWish=el.value;save();render()};
+on('applyPermanent27',()=>{if(tlIsRestricted()){alert('人事制限期間中のため、登用審査は保留されました');return}const target=state.employment==='非常勤講師'?'常勤講師':'専任教諭';const ok=state.year>=2&&state.admin>=42&&seededChoice(87,.62);state.disciplineHistory.unshift(`第${state.year}年：${target}への登用希望 → ${ok?'採用':'見送り'}`);if(ok){state.employment=target;state.careerRank=target==='専任教諭'?'一般教諭':target;state.history.unshift(`${target}として辞令を受領`)}render()});
+on('reschedule27',()=>{state.timetableSeed+=7919;state.schoolPlan=tlBuild();state.history.unshift('時間割を再編しました（固定時限は維持）');render()});
+on('incident27',()=>{let incidents=['授業中の不適切な発言について申立て','校務書類の管理ミスについて申立て','生徒への不公平な対応について申立て'];state.incidentPending=incidents[(state.year+state.week)%incidents.length];state.history.unshift('問題行動に関する申立てが発生。事実確認へ');render()});
+on('investigate27',()=>{if(!state.incidentPending)return;const confirmed=seededChoice(89+state.week,.65);const severe=confirmed&&seededChoice(94+state.week,.48);if(confirmed){const years=severe?4:2;state.disciplineUntil=Math.max(state.disciplineUntil,state.year+years);if(severe){state.careerRank='一般教諭';state.position='担任なし';state.history.unshift('事実確認・弁明後、重大な問題が認定され降職・担任解除')}else{state.history.unshift('事実確認・弁明後、問題が認定され人事制限')};state.disciplineHistory.unshift(`${state.year}年目：事実認定。${years}年度の昇格・担任制限${severe?'／降職':''}`)}else{state.disciplineHistory.unshift(`${state.year}年目：申立ては確認できず処分なし`)}state.incidentPending=null;state.schoolPlan=tlBuild();render()});
+on('rehire27',()=>{if(!state.retired)return;const ok=seededChoice(97,.72);state.disciplineHistory.unshift(`定年後の非常勤再雇用申請：${ok?'承認':'不採用'}`);if(ok){state.retired=false;state.rehired=true;state.employment='非常勤講師';state.careerRank='非常勤講師';state.position='担任なし';state.schoolPlan=tlBuild()}render()});
+};
+const tlRoll27=rollYear;
+rollYear=function(...args){tlRoll27(...args);if(state.rehired&&state.age>=70){state.retired=true;state.history.unshift('再雇用期間を終了しました（ゲーム設定）')}if(state.employment==='非常勤講師'||state.employment==='常勤講師'){state.history.unshift('次年度の雇用契約を更新（ゲーム設定）')}if(tlIsRestricted()&&state.position==='担任')state.position='担任なし';state.schoolPlan=tlBuild();save()};
+// 2.5Dアニメーション強化：遠近感、人物の歩行、影、吹き出し、カメラ追従
+startCanvas=function(){cancelAnimationFrame(raf);const canvas=$('#world');if(!canvas)return;const ctx=canvas.getContext('2d');if(!ctx)return;
+const w=720,h=450,dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);let frameLocal=0,targetX=heroX;
+const actors=npcs[state.scene].map((n,i)=>({name:n[0],x:150+i*230,y:310+(i%2)*38,phase:i*1.9,color:['#b45f69','#4b8c9e','#9c7ac0'][i%3]}));
+function poly(pts,c){ctx.fillStyle=c;ctx.beginPath();ctx.moveTo(...pts[0]);for(let i=1;i<pts.length;i++)ctx.lineTo(...pts[i]);ctx.closePath();ctx.fill()}
+function rect(x,y,w,h,c){ctx.fillStyle=c;ctx.fillRect(x,y,w,h)}
+function rounded(x,y,w,h,r,c){ctx.fillStyle=c;ctx.beginPath();(ctx.roundRect?ctx.roundRect(x,y,w,h,r):ctx.rect(x,y,w,h));ctx.fill()}
+function text2(s,x,y,size=13,color='#fff'){ctx.font=`600 ${size}px system-ui`;ctx.textAlign='center';ctx.fillStyle=color;ctx.fillText(s,x,y)}
+function person(x,y,col,name,t,scale=1){ctx.save();ctx.translate(x,y);ctx.scale(scale,scale);let sway=Math.sin(t*5)*3;ctx.fillStyle='#14283b55';ctx.beginPath();ctx.ellipse(0,4,28,9,0,0,7);ctx.fill();ctx.strokeStyle='#263a55';ctx.lineWidth=8;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(-9,-35);ctx.lineTo(-12+sway,-3);ctx.moveTo(9,-35);ctx.lineTo(13-sway,-3);ctx.stroke();rounded(-19,-91,38,58,11,col);ctx.strokeStyle=col;ctx.lineWidth=10;ctx.beginPath();ctx.moveTo(-18,-78);ctx.lineTo(-28-sway,-44);ctx.moveTo(18,-78);ctx.lineTo(28+sway,-44);ctx.stroke();ctx.fillStyle='#f0c7a5';ctx.beginPath();ctx.arc(0,-110,20,0,7);ctx.fill();ctx.fillStyle='#293443';ctx.beginPath();ctx.arc(0,-121,20,Math.PI,Math.PI*2);ctx.fill();ctx.fillStyle='#293443';ctx.fillRect(-20,-123,40,9);ctx.fillStyle='#283342';ctx.fillRect(-8,-110,3,3);ctx.fillRect(7,-110,3,3);rounded(-48,-151,96,24,10,'#17324ddd');text2(name,0,-134,11);ctx.restore()}
+function desk(x,y,scale=1){ctx.save();ctx.translate(x,y);ctx.scale(scale,scale);poly([[-45,0],[34,0],[54,22],[-28,22]],'#946e55');poly([[-28,22],[54,22],[54,33],[-28,33]],'#654a3c');rect(-21,32,6,24,'#604c41');rect(40,32,6,24,'#604c41');ctx.restore()}
+function draw(){frameLocal++;const t=frameLocal/60;heroX+=(targetX-heroX)*.075;ctx.clearRect(0,0,w,h);let grad=ctx.createLinearGradient(0,0,0,h);grad.addColorStop(0,'#b5d7e8');grad.addColorStop(1,'#e3d9bb');rect(0,0,w,h,grad);poly([[0,248],[720,248],[720,450],[0,450]],'#b8a68c');for(let i=0;i<10;i++){ctx.strokeStyle='#a3917a55';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(360,248);ctx.lineTo(i*105-150,450);ctx.stroke()}for(let y=278;y<450;y+=42){rect(0,y,720,1,'#8d816d35')}
+if(state.scene==='教室'){rounded(46,40,338,160,8,'#e5c8a2');rounded(58,52,314,136,4,'#306b62');text2('今日の授業',216,110,22,'#e5fff2');text2('考える・話す・学ぶ',216,148,15,'#d4eee2');for(let i=0;i<3;i++)for(let j=0;j<2;j++)desk(120+i*215,285+j*66,.75+j*.13)}else if(state.scene==='職員室'){for(let i=0;i<4;i++)desk(110+i*166,315,.85);rounded(40,45,260,110,8,'#f7f4e5');text2('職員会議・連絡事項',170,90,17,'#314a61');rounded(515,35,150,175,8,'#8c9eab')}else{for(let i=0;i<5;i++){rounded(22+i*144,30,100,205,4,i%2?'#8baebd':'#98bdc9');rounded(35+i*144,60,73,98,3,'#e0edf1')}rounded(260,205,200,35,6,'#d7c6a8')}
+actors.forEach((a,i)=>{let ax=a.x+Math.sin(t*.7+a.phase)*28;let ay=a.y+Math.sin(t*.9+a.phase)*7;person(ax,ay,a.color,a.name,t+a.phase,.86+ay/3000);if(Math.sin(t*.8+i)>0.7){rounded(ax-65,ay-195,130,24,10,'#ffffffdc');text2(['おはようございます','次の授業は？','相談があります'][i%3],ax,ay-178,11,'#244055')}});
+person(heroX,410,'#315d9d','あなた',t,1.06);rounded(16,12,165,29,9,'#18384bdc');text2('🏫 '+state.scene,99,32,14);if(Math.abs(heroX-targetX)>3){rounded(235,12,245,28,9,'#23485dbb');text2('移動中…',355,31,13)}raf=requestAnimationFrame(draw)}
+canvas.onclick=e=>{const r=canvas.getBoundingClientRect(),x=(e.clientX-r.left)*w/r.width,y=(e.clientY-r.top)*h/r.height;let idx=actors.findIndex((a,i)=>Math.abs(x-(a.x+Math.sin(frameLocal/60*.7+a.phase)*28))<50&&Math.abs(y-a.y)<150);if(idx>=0)openNpc(idx);else{targetX=Math.max(35,Math.min(685,x));heroX=heroX||targetX}};
+draw()};
+
+try { render(); } catch (error) {
+ console.error('先生ライフ起動エラー',error);
+ document.getElementById('app').innerHTML='<div style="font:16px system-ui;padding:30px;background:#14283b;color:white;min-height:100vh"><h1>起動時に問題が発生しました</h1><p>古い保存データとの不整合が考えられます。</p><button id="clearTL" style="padding:14px;background:#e4f4ff;color:#17324d;border:0;border-radius:8px">保存データを初期化して再起動</button><pre id="tlError" style="white-space:pre-wrap"></pre></div>';
+ document.getElementById('tlError').textContent=String(error);
+ document.getElementById('clearTL').onclick=()=>{localStorage.removeItem('teacherLife27Windows');location.reload()};
+}
+
+// Ver.2.8: 分岐する人事イベント・若手抜擢・解雇審査・再就職
+state.careerEvents=Array.isArray(state.careerEvents)?state.careerEvents:[];
+state.careerEventPending=state.careerEventPending||null;
+state.dismissed=!!state.dismissed;
+state.youngPromotionUsed=!!state.youngPromotionUsed;
+state.appealUsed=!!state.appealUsed;
+function ev28(msg){state.careerEvents.unshift(`${state.year}年目・第${state.week}週：${msg}`);state.careerEvents=state.careerEvents.slice(0,45);state.history.unshift(msg)}
+function eligibleYoung28(){return !state.dismissed&&!state.retired&&!tlIsRestricted()&&state.employment==='専任教諭'&&state.age<=35&&state.year>=2&&state.admin>=52&&state.trust>=48&&state.skill>=48&&!state.youngPromotionUsed}
+function careerEvents28(){const pending=state.careerEventPending;return `<div class="panel" style="margin-top:12px"><h3>🎭 人事ドラマ・特別イベント</h3><p class="sub">判断により辞令や評価が変わる、架空の学校運営シナリオ。事実確認と本人の説明を経て処遇を決定します。</p>
+<div class="listItem">現在の処遇：<b>${state.dismissed?'契約終了・求職中':esc(state.employment)}</b>／${esc(state.careerRank)}<br>人事制限：${tlIsRestricted()?`残り${state.disciplineUntil-state.year}年度`:'なし'}／若手抜擢：${state.youngPromotionUsed?'経験済み':'未経験'}</div>
+${pending?`<div class="note"><b>${esc(pending.title)}</b><p>${esc(pending.description)}</p></div><div class="field">${pending.options.map((v,i)=>`<button class="btn ${i?'alt':''}" data-career-choice28="${i}">${esc(v)}</button>`).join('')}</div>`:
+`<div class="field"><button class="btn alt" id="careerChallenge28" ${eligibleYoung28()?'':'disabled'}>🚀 若手抜擢の選考に挑戦</button><button class="btn alt" id="careerTransfer28" ${state.dismissed||state.retired?'disabled':''}>📋 管理職からの役職変更提案</button><button class="btn danger" id="careerIncident28" ${state.dismissed||state.retired?'disabled':''}>⚠️ 重大な服務問題のシナリオ</button>${state.dismissed?'<button class="btn" id="careerReapply28">📨 再就職・非常勤採用を申請</button>':''}${tlIsRestricted()&&!state.appealUsed?'<button class="btn alt" id="careerAppeal28">📝 処分の再審査を申し立てる</button>':''}</div>`}
+<h3>人事イベント記録</h3><div class="scroll">${state.careerEvents.slice(0,12).map(x=>`<div class="listItem">${esc(x)}</div>`).join('')||'<p class="sub">まだ特別イベントはありません。</p>'}</div></div>`}
+function openCareer28(type){
+ if(type==='young'){if(!eligibleYoung28())return;state.careerEventPending={type,title:'若手教員の主幹教諭候補選考',description:'研究授業の成果が評価され、校長から主幹教諭候補の選考を案内されました。若手抜擢には実績と面接が必要です。',options:['研究授業と面接に挑戦する','来年度に向けて実績を積む']}}
+ if(type==='transfer'){state.careerEventPending={type,title:'校内人事・役職変更の打診',description:'学校運営上の配置見直しが提案されました。希望と学校の事情を踏まえ、役職変更が検討されています。',options:['新しい役職を受け入れる','現在の役職を希望して協議する']}}
+ if(type==='incident'){state.careerEventPending={type,title:'重大な服務問題の調査',description:'校務上の重大な規則違反の疑いが生じました。調査・証拠確認・本人の説明を経て判断します。解雇は必ず起こるわけではありません。',options:['事実関係を説明し、改善策を提出する','調査への説明を保留し、追加確認を求める']}}
+ render()}
+function resolveCareer28(choice){const e=state.careerEventPending;if(!e)return;state.careerEventPending=null;
+ if(e.type==='young'){if(choice===1){state.admin=Math.min(100,state.admin+3);ev28('若手抜擢の選考を見送り、校務経験を積むことにした')}else{state.youngPromotionUsed=true;const chance=Math.min(.82,.23+(state.admin-50)*.012+(state.trust-50)*.006+(state.skill-50)*.005);if(Math.random()<chance){state.careerRank='主幹教諭';state.salary+=65;ev28('若手抜擢！ 主幹教諭に昇進した')}else{state.admin=Math.min(100,state.admin+4);ev28('若手選考は見送り。次回に向けた研修を勧められた')}}}
+ if(e.type==='transfer'){if(choice===0){const ranks=['主幹教諭','教科主任','学年部長','一般教諭'];const next=ranks[(state.year+state.week)%ranks.length];state.careerRank=next;ev28('人事異動の辞令：'+next+'に配置変更')}else{state.admin=Math.max(0,state.admin-2);ev28('役職変更について校長と協議。今回は現職を継続')}}
+ if(e.type==='incident'){const proven=Math.random()<(choice===0?.52:.72);if(!proven){ev28('調査の結果、重大な違反は認定されず。処分なし')}else{const severe=Math.random()<(choice===0?.26:.48);const years=severe?5:3;state.disciplineUntil=Math.max(state.disciplineUntil,state.year+years);state.position='担任なし';state.careerRank='一般教諭';state.trust=Math.max(0,state.trust-(severe?20:9));state.admin=Math.max(0,state.admin-(severe?24:12));state.appealUsed=false;if(severe){state.dismissed=true;state.employment='契約終了';ev28('調査・弁明を経て重大な違反が認定され、雇用契約終了。再就職は別途審査')}else{ev28('違反が認定され降職・担任解除。'+years+'年度の昇進・担任制限')}}}
+ state.schoolPlan=state.dismissed?null:tlBuild();save();render()}
+const side28=side;
+side=function(){return side28()+(state.appointed&&state.tab==='人事'?careerEvents28():'')};
+const bind28=bind;
+bind=function(){bind28();const click=(id,fn)=>{const el=$('#'+id);if(el)el.onclick=fn};click('careerChallenge28',()=>openCareer28('young'));click('careerTransfer28',()=>openCareer28('transfer'));click('careerIncident28',()=>openCareer28('incident'));document.querySelectorAll('[data-career-choice28]').forEach(b=>b.onclick=()=>resolveCareer28(Number(b.dataset.careerChoice28)));click('careerAppeal28',()=>{state.appealUsed=true;if(Math.random()<.35){state.disciplineUntil=Math.max(state.year,state.disciplineUntil-1);ev28('再審査により人事制限が1年度短縮された')}else ev28('再審査の結果、処分は維持された');render()});click('careerReapply28',()=>{if(!state.dismissed)return;const ok=state.year>=state.disciplineUntil&&Math.random()<.55;if(ok){state.dismissed=false;state.employment='非常勤講師';state.careerRank='非常勤講師';state.position='担任なし';state.schoolPlan=tlBuild();ev28('再就職審査に合格。非常勤講師として復帰')}else ev28('再就職申請は見送り。制限期間と採用条件を確認');render()})};
+const advance28=advance;
+advance=function(...args){if(state.dismissed){alert('現在は契約終了中です。人事タブから再就職を申請するか、年度を更新してください。');return}advance28(...args)};
+const rollYear28=rollYear;
+rollYear=function(...args){rollYear28(...args);if(state.dismissed){state.appointed=true;state.position='担任なし';state.employment='契約終了';state.schoolPlan=null;ev28('求職中：次年度の再就職申請が可能');save();render()}};
+
+</script>
+<script>
+// Ver 3.0: branching school-life event engine and narrative dashboard
+const TL_STORIES=[
+['授業','研究授業の公開','他校の先生が見学に来る。授業案の最終調整が必要だ。',[['実験や対話を取り入れた授業にする',3,5,3,-7],['ベテラン教員と共同で準備する',2,3,6,-5]]],
+['授業','実験器具の不具合','理科室で器具の不具合が見つかった。授業前にどうする？',[['安全を優先して実験内容を変更する',5,2,5,-3],['設備担当と相談し代替教材を準備する',3,4,5,-5]]],
+['授業','授業アンケート','授業アンケートで「説明が速い」という意見が多かった。',[['説明の速度と確認問題を見直す',4,6,2,-5],['同僚に授業を見てもらう',3,4,5,-4]]],
+['授業','選択講座の新設','次年度の選択講座に新しい演習を設ける案が出た。',[['教材研究して新講座を提案',5,2,6,-8],['学年団と履修希望を調査する',2,4,5,-5]]],
+['生徒','進路面談','生徒が進路をまだ決められずにいる。',[['本人の希望を丁寧に聞く',1,7,2,-4],['進路指導部と一緒に選択肢を整理する',2,5,5,-5]]],
+['生徒','欠席が続く生徒','ある生徒の欠席が増えている。',[['本人の状況を確認し支援体制を相談する',1,7,4,-5],['養護教諭や学年団と連携する',1,5,6,-4]]],
+['生徒','学級の意見対立','文化祭の企画でクラス内の意見が割れた。',[['話し合いの場を設ける',2,7,3,-5],['少人数の意見を聞いて案を整理する',2,6,4,-5]]],
+['生徒','生徒会からの相談','校則について生徒会から改善案が届いた。',[['生徒会と対話する',1,6,4,-4],['生活指導部に提案を共有する',1,4,6,-3]]],
+['保護者','保護者面談','成績評価の説明について保護者から質問があった。',[['評価基準と記録を確認して説明する',2,5,5,-5],['教科主任同席で面談する',1,4,6,-4]]],
+['保護者','保護者会の準備','学年保護者会の資料作成が間に合っていない。',[['学年団で役割分担を見直す',1,4,6,-6],['優先順位を整理して作成する',2,3,5,-5]]],
+['職員室','若手教員の相談','新任の先生が学級運営に悩んでいる。',[['一緒に指導案を考える',3,5,5,-5],['学年部長につなぎ継続的に支援する',1,4,6,-4]]],
+['職員室','教科会議での提案','教科会議で授業改善のアイデアを発表する機会が来た。',[['ICTを活用した案を発表',4,2,7,-7],['他教員の意見をまとめる',2,5,6,-5]]],
+['職員室','同僚の急な欠勤','同僚が急に休むことになり、授業調整が必要になった。',[['教務部と代講を調整する',1,4,7,-6],['自分の空き時間で支援する',1,5,5,-9]]],
+['職員室','新年度の校務分掌','来年度の校務分掌について意見を求められた。',[['得意分野を生かせる担当を提案',2,2,6,-4],['学校全体の人員配置を優先する',1,4,7,-4]]],
+['部活動','大会前の練習計画','大会まであとわずか。練習量と休養のバランスが課題だ。',[['休養日を確保し質を高める',2,6,4,-4],['部員と練習目標を再設定する',3,5,4,-5]]],
+['部活動','新入部員の歓迎','新入部員が入部してきた。部の雰囲気を整えたい。',[['上級生と交流会を開く',1,7,3,-5],['安全と活動方針を説明する',2,5,5,-4]]],
+['部活動','顧問会議','活動場所の調整で複数の部が困っている。',[['顧問同士で公平な利用計画を作る',1,4,7,-5],['生徒の意見を集めて調整する',1,6,5,-6]]],
+['行事','文化祭直前のトラブル','企画に必要な物品が足りないことが判明した。',[['安全な代替案に切り替える',2,6,5,-6],['実行委員会と必要物品を再調整',1,5,6,-6]]],
+['行事','体育祭の雨天対応','体育祭当日の天候が不安定だ。',[['安全基準を確認し実施判断を共有',1,5,7,-5],['予備日と連絡体制を整える',1,4,7,-5]]],
+['行事','2月の研修旅行','研修旅行の班別行動で予定変更が必要になった。',[['生徒の安全と所在を確認する',1,7,6,-6],['引率教員と連携し行程を調整',1,5,7,-5]]],
+['人事','若手の主任候補','校長から若手の教科主任候補として面談を打診された。',[['昇進への意欲を伝える',1,2,8,-5],['まず授業実績を積むと伝える',4,3,4,-3]]],
+['人事','管理職からの改善指導','校務の報告が遅れ、改善計画の提出を求められた。',[['事実を確認し改善計画を作る',1,2,6,-5],['管理職と進捗確認の仕組みを作る',1,3,5,-5]]],
+['人事','配置転換の相談','校長から来年度の学年変更を打診された。',[['新しい学年で挑戦する意思を示す',2,3,6,-5],['継続担当の希望と理由を説明する',2,4,4,-4]]],
+['人事','昇進審査の推薦','勤務実績を評価され、主幹教諭の選考に推薦された。',[['選考に挑戦する',1,2,8,-7],['今回は辞退し指導に集中する',4,4,2,-2]]],
+['人事','業務の引き継ぎ','退職する教員の担当業務を引き継ぐ候補になった。',[['担当範囲を整理して引き受ける',1,2,7,-7],['負担を考慮した分担を提案する',1,4,6,-4]]],
+['危機対応','個人情報の取り扱い','生徒の個人情報を含む資料の扱いに不備が見つかった。',[['管理職へ報告し保護手順を確認する',1,3,7,-6],['担当部署と再発防止策を作る',1,3,6,-5]]],
+['危機対応','校内設備の安全点検','施設点検で修理が必要な箇所が見つかった。',[['使用を止め担当部署に連絡する',1,5,6,-4],['代替教室を確保する',1,4,6,-5]]],
+['危機対応','学級の相談対応','学級内での対人関係について相談があった。',[['関係者の話を丁寧に聞き組織で対応',1,7,5,-6],['生徒支援担当と連携する',1,5,7,-5]]]
+];
+state.storyHistory=state.storyHistory||[];state.storyPending=state.storyPending||null;state.storyLastWeek=state.storyLastWeek||0;state.storyCount=state.storyCount||0;
+const tlOldSide30=side,tlOldBind30=bind,tlOldAdvance30=advance;
+function storyDashboard30(){const s=state;let rec=(s.storyHistory||[]).slice(0,16);return `<h2>🎭 スクールストーリー</h2><div class="note">授業・学級・保護者・部活動・人事など28種類の分岐イベント。通常勤務中にも不定期に発生します。</div><div class="storyMetrics"><div>📚 対応件数<b>${s.storyCount||0}</b></div><div>🤝 信頼<b>${s.trust}</b></div><div>🏛️ 校務評価<b>${s.admin}</b></div></div>${s.storyPending?`<div class="storyEvent"><span class="badge">${esc(s.storyPending.category)} · 発生中</span><h3>${esc(s.storyPending.name)}</h3><p>${esc(s.storyPending.desc)}</p>${s.storyPending.choices.map((c,i)=>`<button class="btn ${i?'alt':''}" data-story-choice="${i}">${esc(c[0])}</button>`).join('')}</div>`:`<div class="note">現在、対応待ちのイベントはありません。授業などで週を進めるとイベントが発生することがあります。</div><button class="btn" id="storyExplore30">📨 今週の校内ニュースを確認</button>`}<h3>📖 イベント記録</h3><div class="scroll">${rec.map(x=>`<div class="listItem">${esc(x)}</div>`).join('')||'<p class="sub">まだ記録はありません。</p>'}</div>`}
+side=function(){if(state.tab!=='物語')return tlOldSide30();return `<div class="panel"><div class="nav">${['行動','時間割','人事','物語','記録'].map(x=>`<button data-tab="${x}" class="${state.tab===x?'active':''}">${x}</button>`).join('')}</div>${storyDashboard30()}</div>`};
+function storyPick30(){const pool=TL_STORIES.filter(e=>state.school==='高校'||e[1]!=='2月の研修旅行');let index=Math.floor(Math.random()*pool.length);let e=pool[index];return {category:e[0],name:e[1],desc:e[2],choices:e[3]}}
+function storyOpen30(){if(state.storyPending)return;state.storyPending=storyPick30();state.tab='物語';save();render()}
+function storyResolve30(i){const e=state.storyPending;if(!e)return;const c=e.choices[i];if(!c)return;state.trust=clamp(state.trust+c[1]);state.skill=clamp(state.skill+c[2]);state.admin=clamp(state.admin+c[3]);state.energy=clamp(state.energy+c[4]);state.storyCount++;let line=`${state.year}年目・第${state.week}週｜${e.name}：${c[0]}`;state.storyHistory.unshift(line);state.storyHistory=state.storyHistory.slice(0,70);state.history.unshift(line);if(e.name==='昇進審査の推薦'&&i===0&&state.admin>=75&&state.year>=3&&!tlIsRestricted()&&state.employment==='専任教諭'){state.careerWish='主幹教諭';state.history.unshift('主幹教諭への昇進希望を提出した。辞令は年度更新時に審査される。')}state.storyPending=null;save();render()}
+bind=function(){tlOldBind30();if(state.appointed&&state.tab!=='物語'){let nav=$('.nav');if(nav&&!nav.querySelector('[data-tab="物語"]')){let b=document.createElement('button');b.textContent='🎭 物語';b.dataset.tab='物語';b.onclick=()=>{state.tab='物語';render()};nav.insertBefore(b,nav.lastElementChild)}}document.querySelectorAll('[data-story-choice]').forEach(b=>b.onclick=()=>storyResolve30(Number(b.dataset.storyChoice)));let explore=$('#storyExplore30');if(explore)explore.onclick=()=>storyOpen30()};
+advance=function(...args){const before=state.week;tlOldAdvance30(...args);if(state.appointed&&!state.storyPending&&state.week!==before&&Math.random()<.34){storyOpen30()}};
+
+</script>
+<script>
+// Ver 3.3: 初期試験廃止・役職希望者のみ昇任選考
+(()=>{
+const oldRender33=render, oldAssign33=assign, oldBind33=bind;
+let phase33=state.appointed?'play':'setup', question33=0, answers33=[], appointment33=null;
+const roles33=['一般教諭','主幹教諭','学年部長','教科主任','コース長','教頭','副校長','校長'];
+const questions33=[
+ {q:'学年の時間割で、同じ教員が同時刻に2クラスへ配置されていた。どうする？',a:['時間割担当と連携して重複を解消する','そのまま運用する','生徒に調整を任せる'],ok:0},
+ {q:'保護者から学級指導について苦情が届いた。まず行うことは？',a:['事実と記録を確認し関係者と相談する','即座に生徒を処分する','苦情を無視する'],ok:0},
+ {q:'理科実験で設備の安全上の問題を発見した。適切なのは？',a:['実験を止め安全確保と代替授業を検討する','時間がないので続行する','生徒だけで片付ける'],ok:0},
+ {q:'教員の研修日に担任クラスの連絡対応が必要になった。どうする？',a:['副担任と引き継ぎ、学年団で支援する','担任がいないので放置する','別クラスの生徒に任せる'],ok:0},
+ {q:'若手教員が授業づくりで悩んでいる。主任としてどうする？',a:['授業を一緒に振り返り、改善を支援する','経験不足として突き放す','評価を一方的に下げる'],ok:0},
+ {q:'教員間で担当授業の配分について意見が割れた。管理職として？',a:['免許・負担・教育課程を確認して調整する','声の大きい教員を優先する','くじ引きだけで決める'],ok:0}
+];
+function panel33(html){$('#app').innerHTML='<div class="screen panel" style="max-width:820px;margin:35px auto">'+html+'</div>'}
+function target33(){return state.careerWish||'一般教諭'}
+function need33(){return !['お任せ','一般教諭','非常勤講師','常勤講師','専任教諭'].includes(target33())}
+function threshold33(){let rank=roles33.indexOf(target33());let age=Number(state.age)||25;let base=2+Math.ceil(rank/2)+(age<30?2:age<35?1:0);let bonus=state.background==='大学院卒'?1:state.background==='一般企業から転職'?1:state.background==='他校から転職'&&age>=40&&['教頭','副校長','校長'].includes(target33())?2:0;return Math.min(6,Math.max(2,base-bonus))}
+function exam33(){let x=questions33[question33];panel33(`<div class="badge">役職選考 · ${question33+1} / ${questions33.length}</div><h1 class="title">🏛️ ${esc(target33())} 選考試験</h1><p class="sub">一般教諭の採用試験はありません。${esc(target33())}を希望したため、校内選考を行います。若手ほど合格条件が厳しくなります。大学院卒・企業経験者には選考優遇があり、40歳以上の他校経験者は教頭以上で特に有利です（ゲーム内設定）。</p><div class="note">現在 ${state.age}歳 ／ 合格目安 ${threshold33()}問以上正解（全6問）</div><h3>${esc(x.q)}</h3>${x.a.map((a,i)=>`<button class="btn alt" data-role-answer="${i}">${esc(a)}</button>`).join('')}<button class="btn alt" id="cancelRole33">役職希望を取り下げて一般教諭で進む</button>`);document.querySelectorAll('[data-role-answer]').forEach(b=>b.onclick=()=>{answers33.push(Number(b.dataset.roleAnswer));question33++;if(question33>=questions33.length){const score=answers33.reduce((n,v,i)=>n+(v===questions33[i].ok?1:0),0);const pass=score>=threshold33()&&Math.random()<Math.min(.97,Math.max(.18,.82-(Number(state.age)<30?.22:0)+(state.background==='大学院卒'?.09:state.background==='一般企業から転職'?.12:state.background==='他校から転職'&&Number(state.age)>=40&&['教頭','副校長','校長'].includes(target33())?.18:0)));state.roleExam33={score,required:threshold33(),pass,role:target33(),age:state.age};phase33='roleResult';}render()});$('#cancelRole33').onclick=()=>{state.careerWish='一般教諭';state.roleExam33=null;phase33='setup';render()}}
+function result33(){const e=state.roleExam33;panel33(`<div class="badge">選考結果</div><h1 class="title">${e.pass?'🎉 選考合格':'📋 今回は見送り'}</h1><div class="note">希望：${esc(e.role)} ／ 正解 ${e.score}/6 ／ 合格目安 ${e.required}/6</div><p>${e.pass?'役職選考に合格しました。最終的な役職は校長の辞令で発表されます。':'一般教諭として勤務し、次年度以降に再挑戦できます。'}</p><button class="btn" id="finish33">校長の辞令発表へ →</button>`);$('#finish33').onclick=()=>finalize33()}
+function finalize33(){const requested={role:state.role,dept:state.dept,club:state.club,trainingDay:state.trainingDay,career:target33()};const notes=[];let chance=.63;
+if(state.role!=='お任せ'&&Math.random()>chance){state.role='お任せ';notes.push('学級担当は学校事情により調整')}
+if(state.dept!=='お任せ'&&Math.random()>chance){state.dept='お任せ';notes.push('校務分掌は学校事情により調整')}
+if(state.club!=='お任せ'&&Math.random()>chance){state.club='お任せ';notes.push('部活動は学校事情により調整')}
+if(state.trainingDay!=='お任せ'&&Math.random()>chance){state.trainingDay='お任せ';notes.push('研修日は学校事情により調整')}
+oldAssign33();
+const forbidden=state.school==='中学'?'月':({1:'水',2:'金',3:'木'}[state.grade]);if(state.trainingDay===forbidden){state.trainingDay=DAYS.find(d=>d!==forbidden);notes.push('研修日を禁止曜日以外に変更')}
+const selected=state.roleExam33;const canPromote=need33()&&selected?.pass&&!state.retired&&!state.dismissed&&!(state.year<state.disciplineUntil)&&state.employment==='専任教諭';
+if(canPromote){state.careerRank=target33();notes.push('役職選考合格：'+target33()+'に任命')}else if(need33()){notes.push('役職希望は見送り：一般教諭として勤務');if(state.employment==='専任教諭')state.careerRank='一般教諭'}
+if(state.employment==='非常勤講師'||requested.role==='担任なし'&&state.position==='担任なし'){
+ state.position='担任なし';state.deputyRooms=[];
+}
+if(state.employment==='非常勤講師'){state.position='担任なし';state.deputyRooms=[]}
+if(['校長','教頭','副校長'].includes(state.careerRank)){state.club='なし';state.position='担任なし';state.deputyRooms=[];notes.push('管理職のため部活動顧問は担当しません')}
+// 「担任なし」は学級担任・副担任を持たないが、教科の授業担当は残す
+if(state.position==='担任なし'){state.deputyRooms=[];state.deputyName='該当なし'}
+if(state.position==='担任なし'||state.employment==='非常勤講師'){
+ state.classes=(state.classes||[]).filter(c=>c!==state.room);
+}
+appointment33={requested,notes};state.hiringAppointment={requested,changes:notes,actual:{room:state.room,position:state.position,rank:state.careerRank}};
+state.history.unshift('校長から担当授業・学級・役職の辞令を受けた');phase33='appointment';save();render()}
+function appointmentView33(){const a=appointment33||{notes:[]};panel33(`<div class="badge">校長室 · 辞令交付</div><h1 class="title">🏫 校長からの人事発表</h1><div style="font-size:60px;text-align:center;padding:12px">👨‍💼 📜 🧑‍🏫</div><div class="note">校長「希望、選考結果、学校全体の教員配置を踏まえて今年度の担当を決定しました。」</div><div class="listItem">役職：<b>${esc(state.careerRank)}</b></div><div class="listItem">雇用：<b>${esc(state.employment)}</b></div><div class="listItem">所属：<b>${esc(state.room)}</b></div><div class="listItem">学級担当：<b>${esc(state.position)}</b></div><div class="listItem">担当科目：<b>${esc(state.subject)}</b></div><div class="listItem">校務分掌：<b>${esc(state.assignment)}</b></div><div class="listItem">部活動：<b>${esc(state.club)}</b></div><div class="listItem">研修日：<b>${esc(state.trainingDay)}曜日</b></div>${a.notes.map(n=>`<div class="listItem">${esc(n)}</div>`).join('')}<button class="btn" id="accept33">辞令を受け取り、勤務開始 →</button>`);$('#accept33').onclick=()=>{phase33='play';render()}}
+render=function(){if(phase33==='roleExam')return exam33();if(phase33==='roleResult')return result33();if(phase33==='appointment')return appointmentView33();oldRender33();if(phase33==='setup'){let b=$('#start');if(b)b.textContent='📨 人事希望を提出する →'}};
+bind=function(){oldBind33();const b=$('#start');if(b)b.onclick=()=>{if(!state.licenses.length){alert('教員免許を1つ以上選択してください');return}if(!state.teachAuto&&(!state.teachSchools.length||!state.teachGrades.length||(state.teachSchools.includes('高校')&&!state.teachCourses.length))){alert('授業希望を指定してください');return}question33=0;answers33=[];if(need33()&&state.employmentWish!=='非常勤講師'){phase33='roleExam';render()}else finalize33()}};
+const roll33=rollYear;rollYear=function(...args){let r=roll33(...args);if(!state.appointed)phase33='setup';return r};
+render();
+})();
+</script><script>
+// Ver 3.4: rank-specific work, capped lessons, and management decisions
+(()=>{
+const ROLE_RULES={
+ '一般教諭':{cap:20,title:'授業・学級運営',tasks:[['教材研究','授業案を改善し、生徒の理解を深める',2,6,1],['個別面談','生徒の相談を聞き、必要に応じて学年団と連携する',5,1,2]]},
+ '教科主任':{cap:14,title:'教科会議・教材管理',tasks:[['教科会議','教科の指導計画を調整する',1,2,7],['研究授業の支援','若手教員の授業改善を支える',3,5,5]]},
+ '学年部長':{cap:12,title:'学年運営・保護者連携',tasks:[['学年会議','学年行事と生徒指導の方針を調整する',2,1,8],['保護者対応','複数教員で事実を確認し、丁寧に説明する',5,1,5]]},
+ 'コース長':{cap:10,title:'コース運営・進路企画',tasks:[['コース会議','コースの教育課程と進路支援を調整する',1,2,8],['進路企画','生徒の進路に合わせた講座を提案する',4,3,5]]},
+ '主幹教諭':{cap:8,title:'校務統括・若手育成',tasks:[['校務調整','各分掌の進行を確認し、負担を調整する',2,1,9],['若手教員の育成','教員の相談に応じ研修を企画する',3,5,6]]},
+ '教頭':{cap:2,title:'学校運営・教職員の勤務調整',tasks:[['職員会議の運営','議題を整理し各分掌の進捗を確認する',1,1,9],['時間割・代講調整','欠勤時の授業体制を整える',2,2,8],['安全点検','校内の安全点検と改善計画を確認する',2,1,8]]},
+ '副校長':{cap:2,title:'学校運営・対外連携',tasks:[['学校運営会議','教育方針と各学年の課題を調整する',1,2,9],['保護者・地域連携','学校の方針を説明し意見を聞く',4,1,6],['教員研修の企画','教職員の研修計画を調整する',2,4,7]]},
+ '校長':{cap:0,title:'学校経営・人事・最終決裁',tasks:[['人事会議','教員の希望と学校の必要人数を照合する',1,1,9],['学校経営方針の決定','次年度の教育方針と重点目標を決める',2,2,8],['予算の決裁','設備更新と教育活動の予算を審査する',1,1,8],['保護者・地域との協議','学校運営への意見を聞く',4,1,6]]}
+};
+const rule=()=>ROLE_RULES[state.careerRank]||ROLE_RULES['一般教諭'];
+const priorBuild=tlBuild;
+tlBuild=function(){
+ const plan=priorBuild();const me=plan.me, cap=state.employment==='非常勤講師'?Math.min(10,rule().cap):rule().cap;
+ // Management posts do not take a homeroom. Vice principals teach exactly two periods where feasible.
+ if(['校長','教頭','副校長'].includes(state.careerRank)||state.employment==='非常勤講師'||state.role==='担任なし'){
+  state.position='担任なし';me.homerooms=[];me.deputyRooms=[];
+  for(const r of plan.rooms){if(plan.homeroom[r.id]===me){let alt=plan.staff.find(t=>t.id!=='ME'&&!t.homerooms.length&&t.license===me.license)||plan.staff.find(t=>t.id!=='ME'&&!t.homerooms.length);if(alt){plan.homeroom[r.id]=alt;alt.homerooms.push(r.id)}}if(plan.deputy[r.id]===me){let alt=plan.staff.find(t=>t.id!=='ME'&&!t.deputyRooms.length&&!t.homerooms.length);if(alt){plan.deputy[r.id]=alt;alt.deputyRooms.push(r.id)}}}
+ }
+ // Reallocate surplus periods to other licensed staff, preserving room's period and subject.
+ const sorted=[...me.lessons].sort((a,b)=>a.d-b.d||a.p-b.p);
+ for(const l of sorted.slice(cap)){
+  const cell=plan.grids[l.room]?.[l.d]?.[l.p-1];if(!cell||cell.teacher!==me)continue;
+  const family=tlFamilyExpanded(l.sub);const replacement=plan.staff.filter(t=>t.id!=='ME'&&(t.licenses||[t.license]).includes(family)&&t.training!==DAYS[l.d]&&!t.lessons.some(x=>x.d===l.d&&x.p===l.p)).sort((a,b)=>a.lessons.length-b.lessons.length)[0];
+  if(replacement){cell.teacher=replacement;replacement.lessons.push({...l})}else{cell.teacher=null;plan.notes.push(`${l.label} ${DAYS[l.d]}${l.p}限：代替教員未配置`)}
+ }
+ me.lessons=sorted.slice(0,cap).filter(l=>plan.grids[l.room]?.[l.d]?.[l.p-1]?.teacher===me);
+ // A principal must never teach. A vice principal's two lessons are a target; report shortage transparently.
+ if(['教頭','副校長'].includes(state.careerRank)&&me.lessons.length<2)plan.notes.push(`${state.careerRank}の授業は${me.lessons.length}/2コマ：該当授業の配置が不足`);
+ state.weeklyLessons=me.lessons.length;
+ return plan;
+};
+function refresh(){if(!state.appointed)return;state.schoolPlan=tlBuild();state.classes=[...new Set(state.schoolPlan.me.lessons.map(x=>x.label))];state.subject=[...new Set(state.schoolPlan.me.lessons.map(x=>x.sub))].join('・')||'授業担当なし';save()}
+const oldSide=side;
+side=function(){let h=oldSide();if(!state.appointed)return h;const r=rule(),count=state.schoolPlan?.me?.lessons?.length??0;
+ const management=`<div class="panel" style="margin-top:12px"><h2>🏛️ 役職別の仕事</h2><div class="note">${esc(state.careerRank)}｜${esc(r.title)}<br>授業：週<strong>${count}</strong>コマ ／ 上限${r.cap}コマ${['教頭','副校長'].includes(state.careerRank)?'（原則2コマ）':''}<br>${state.careerRank==='校長'?'校長は授業・担任を担当しません。':'役職に応じて授業数と校務の割合が変わります。'}</div>${r.tasks.map((t,i)=>`<div class="listItem"><b>${esc(t[0])}</b><br>${esc(t[1])}<br><button class="btn alt" data-rank-task="${i}">この仕事を行う</button></div>`).join('')}</div>`;
+ return h+management;
+};
+const oldBind=bind;
+bind=function(){oldBind();document.querySelectorAll('[data-rank-task]').forEach(b=>b.onclick=()=>{const task=rule().tasks[Number(b.dataset.rankTask)];if(!task)return;advance(task[0],task[3],task[4],task[5],-5);});};
+const oldAssign=assign;
+assign=function(...args){oldAssign(...args);refresh()};
+const oldRender=render;
+render=function(...args){if(state.appointed&&(!state.schoolPlan||state.schoolPlan.me.lessons.length>rule().cap||state.careerRank==='校長'&&state.schoolPlan.me.lessons.length))refresh();return oldRender(...args)};
+const oldRoll=rollYear;
+rollYear=function(...args){oldRoll(...args);if(state.appointed)refresh()};
+if(state.appointed)refresh();render();
+})();
+</script>
+<script>
+/* Ver.3.5: employment and class-affiliation rules. */
+(function(){
+ const previousAssign=assign, previousRefresh=refresh, previousRender=render, previousRoll=rollYear;
+ function enforce35(){
+   if(!state.appointed)return;
+   const part=state.employment==='非常勤講師';
+   const manager=['校長','教頭','副校長'].includes(state.careerRank);
+   if(manager){state.club='なし';state.position='担任なし';state.role='担任なし';}
+   const noClass=part||state.position==='担任なし'||['校長','教頭','副校長'].includes(state.careerRank);
+   if(part){state.position='担任なし';state.role='担任なし';state.assignment='なし';state.dept='なし';state.club='なし';}
+   if(noClass){
+     state.room='所属クラスなし';state.deputyName='該当なし';state.deputyRooms=[];
+     if(state.schoolPlan?.me){state.schoolPlan.me.homerooms=[];state.schoolPlan.me.deputyRooms=[];}
+   }
+   // Classes taught are distinct from homeroom affiliation; keep them visible.
+   if(state.schoolPlan?.me){state.classes=[...new Set(state.schoolPlan.me.lessons.map(x=>x.label))];}
+ }
+ assign=function(...args){previousAssign(...args);enforce35();save()};
+ refresh=function(...args){previousRefresh(...args);enforce35();save()};
+ rollYear=function(...args){previousRoll(...args);enforce35();save()};
+ render=function(...args){enforce35();const out=previousRender(...args);
+   // In the personnel panel, explicitly distinguish teaching classes from affiliation.
+   const nav=document.querySelector('.nav');
+   if(nav){const panel=nav.parentElement;if(panel){panel.querySelectorAll('h3').forEach(h=>{if(h.textContent.startsWith('担当クラス'))h.textContent=h.textContent.replace('担当クラス','授業担当クラス（所属ではありません）')});}}
+   return out;
+ };
+ enforce35();save();render();
+})();
+</script>
+<script>/* Ver.3.6: clear management club assignments in persisted games. */
+(function(){try{if(typeof state!=='undefined' && ['校長','教頭','副校長'].includes(state.careerRank)){state.club='なし';state.position='担任なし';state.room='所属クラスなし';if(typeof save==='function')save();}}catch(e){console.warn(e)}})();
+</script></body></html>
